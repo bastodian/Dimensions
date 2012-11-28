@@ -10,6 +10,10 @@
     Make sure input files are in the correct order.
 
     md5test.sh md5file1 md5file2
+
+    Author: Bastian Bentlage
+    Email: bastian.bentlage@gmail.com
+    License: Creative Commons Attribution
 !
 
 paste $1 $2 |\
