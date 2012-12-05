@@ -28,23 +28,25 @@ done >> NumSeqs.raw
 I was interested to see where the adapters/primers in the libraries are located
 in each read. I did a simple grep search for this purpose.
 
-    : <<'!'
-        This script looks for the first part of the indexed Illumina adapter and
-        and counts the number of its occurrence in the reads file.
+```bash
+: <<'!'
+    This script looks for the first part of the indexed Illumina adapter and
+    and counts the number of its occurrence in the reads file.
 
-        In addition the number of occurrences of the adapter at the beginning or
-        the end of a read are counted.
+    In addition the number of occurrences of the adapter at the beginning or
+    the end of a read are counted.
 
-        This assumes exact matches.
-    !
+    This assumes exact matches.
+!
 
-    for file in /mnt/pond/BGIhdd/F12FPCUSAT0183_ALGjhnT/Data/D[CN]*/*1.fq.gz
-    do 
-        echo $file | sed 's/\/mnt\/pond\/BGIhdd\/F12FPCUSAT0183_ALGjhnT\/Data\///g'
-        gunzip -c $file | grep -c 'GATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
-        gunzip -c $file | grep -c '^GATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
-        gunzip -c $file | grep -c 'GATCGGAAGAGCACACGTCTGAACTCCAGTCAC$'
-    done
+for file in /mnt/pond/BGIhdd/F12FPCUSAT0183_ALGjhnT/Data/D[CN]*/*1.fq.gz
+do 
+    echo $file | sed 's/\/mnt\/pond\/BGIhdd\/F12FPCUSAT0183_ALGjhnT\/Data\///g'
+    gunzip -c $file | grep -c 'GATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+    gunzip -c $file | grep -c '^GATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+    gunzip -c $file | grep -c 'GATCGGAAGAGCACACGTCTGAACTCCAGTCAC$'
+done
+```
 
 The following sequences were searched for:
     
@@ -70,29 +72,29 @@ of 8 samples we sequenced prior to the remainder of the batch for T6.
 
 The following code was used to retrieve the adapter sequence:
 
-    #!/bin/bash
+```bash
+: <<'!'
+    This script searches for the 5 prime part of the Truseq index adapter and then 
+    cuts the 8 characters following it out of the seqeunce. I keep the most abundant
+    8-mer. Not pretty but seems to work...
 
-    : <<'!'
-        This script searches for the 5 prime part of the Truseq index adapter and then 
-        cuts the 8 characters following it out of the seqeunce. I keep the most abundant
-        8-mer. Not pretty but seems to work...
+    FindIndex.sh PATH/TO/DATA
+!
 
-        FindIndex.sh PATH/TO/DATA
-    !
+INPATH=$1
 
-    INPATH=$1
-
-    for file in ${INPATH}D[CN]*/*1.fq.gz
-    do
-        echo $file
-        gunzip -c $file |\
-        awk '{for(i=1;i<=NF;i++){if($i~/^GATCGGAAGAGCACACGTCTGAACTCCAGTCAC/){print $i}}}' |\
-        cut -c34-41 |\
-        sort |\
-        uniq -c |\
-        sort -r |\
-        head -n 1
-    done
+for file in ${INPATH}D[CN]*/*1.fq.gz
+do
+    echo $file
+    gunzip -c $file |\
+    awk '{for(i=1;i<=NF;i++){if($i~/^GATCGGAAGAGCACACGTCTGAACTCCAGTCAC/){print $i}}}' |\
+    cut -c34-41 |\
+    sort |\
+    uniq -c |\
+    sort -r |\
+    head -n 1
+done
+```
 
 This yields the following 8 index sequences:
 
