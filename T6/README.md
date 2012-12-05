@@ -16,13 +16,14 @@ the old Illumina encoding with a Phred ASCII +64 offset rather than standard San
 encoding; I will address this by converting the qual lines in the fastq files.
 
 Number of sequences in all libraries were counted using the following command:
-    ```bash
-    for file in /mnt/pond/BGIhdd/F12FPCUSAT0183_ALGjhnT/Data/D[CN]*/*1.fq.gz
-    do 
-        echo $file | sed 's/\/mnt\/pond\/BGIhdd\/F12FPCUSAT0183_ALGjhnT\/Data\///g'
-        gunzip -c $file |  grep -c 'FC'
-    done >> NumSeqs.raw 
-    ```
+
+```bash
+for file in /mnt/pond/BGIhdd/F12FPCUSAT0183_ALGjhnT/Data/D[CN]*/*1.fq.gz
+do 
+    echo $file | sed 's/\/mnt\/pond\/BGIhdd\/F12FPCUSAT0183_ALGjhnT\/Data\///g'
+    gunzip -c $file |  grep -c 'FC'
+done >> NumSeqs.raw 
+```
 
 I was interested to see where the adapters/primers in the libraries are located
 in each read. I did a simple grep search for this purpose.
