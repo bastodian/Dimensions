@@ -94,14 +94,14 @@ The following code was used to retrieve the adapter sequence:
 
 This yields the following 8 index sequences:
 
-    * ACAGTGAT
-    * ATCACGAT
-    * GCCAATAT
-    * GTCCGCAC
-    * GTGAAACG
-    * GTGGCCTT
-    * GTTTCGGA
-    * TGACCAAT
+* ACAGTGAT
+* ATCACGAT
+* GCCAATAT
+* GTCCGCAC
+* GTGAAACG
+* GTGGCCTT
+* GTTTCGGA
+* TGACCAAT
 
 QC: removal of poor quality bases and contaminants
 --------------------------------------------------
