@@ -5,8 +5,9 @@ Overview
 --------
 
 We received libraries from 200 samples for the analysis of the final timepoint
-of the experiment. Scripts used during the analysis can be found in the scripts
-folder, while log files are in the logs folder and linked to in this documentation.
+of the experiment. Scripts, programs, and modules used during the analysis can be 
+found in the code folder, while log files are in the logs folder and linked to 
+in this documentation.
 
 Initial QC
 ----------
