@@ -23,7 +23,7 @@ Number of sequences in all libraries were counted using the following command:
         gunzip -c $file |  grep -c 'FC'
     done >> NumSeqs.raw 
 
-I was interested to see where the adapters used to bind the DNA in the libraries are located
+I was interested to see where the adapters/primers in the libraries are located
 in each read. I did a simple grep search for this purpose.
 
     : <<'!'
@@ -54,7 +54,7 @@ The following sequences were searched for:
     tag5prime = 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'  
     tag3prime = 'CAAGCAGAAGACGGCATACGAGAT - INDEX - GTGACTGGAGTTCAGACGTGTGCTCTTCCGATC'
 
-The results of this was somewhat surprising in that I could find the adapter sequences in
+The results of this were somewhat surprising in that I could find the adapter sequences in
 the data we received in batch 1 (the test batch), but not in most (all?) of the remaining
 libraries. My assumption is that BGI removed the adapters in a first pass QC step for
 batch 2. Nonetheless, the orientation of the adapters/primers I found corresponds to my
@@ -94,12 +94,16 @@ The following code was used to retrieve the adapter sequence:
 
 This yields the following 8 index sequences:
 
-    ACAGTGAT
-    ATCACGAT
-    GCCAATAT
-    GTCCGCAC
-    GTGAAACG
-    GTGGCCTT
-    GTTTCGGA
-    TGACCAAT
+    * ACAGTGAT
+    * ATCACGAT
+    * GCCAATAT
+    * GTCCGCAC
+    * GTGAAACG
+    * GTGGCCTT
+    * GTTTCGGA
+    * TGACCAAT
+
+QC: removal of poor quality bases and contaminants
+--------------------------------------------------
+
 
