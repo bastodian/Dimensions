@@ -5,19 +5,60 @@ Overview
 --------
 
 We received libraries from 200 samples for the analysis of the final timepoint
-of the experiment.
+of the experiment. Scripts used during the analysis can be found in the scripts
+folder, while log files are in the logs folder and linked to in this documentation.
 
 Initial QC
 ----------
 
-The quality of all libraries was assessed using FASTQC. I counted the sequences in all
-libraries using the following command:
+The quality of all libraries was assessed using FASTQC. IMPORTANT: the libraries follow
+the old Illumina encoding with a Phred ASCII +64 offset rather than standard Sanger +33 
+encoding; I will address this by converting the qual lines in the fastq files.
+
+Number of sequences in all libraries were counted using the following command:
 
     for file in /mnt/pond/BGIhdd/F12FPCUSAT0183_ALGjhnT/Data/D[CN]*/*1.fq.gz
     do 
         echo $file | sed 's/\/mnt\/pond\/BGIhdd\/F12FPCUSAT0183_ALGjhnT\/Data\///g'
         gunzip -c $file |  grep -c 'FC'
     done >> NumSeqs.raw 
+
+I was interested to see where the adapters used to bind the DNA in the libraries are located
+in each read. I did a simple grep search for this purpose.
+
+    : <<'!'
+        This script looks for the first part of the indexed Illumina adapter and
+        and counts the number of its occurrence in the reads file.
+
+        In addition the number of occurrences of the adapter at the beginning or
+        the end of a read are counted.
+
+        This assumes exact matches.
+    !
+
+    for file in /mnt/pond/BGIhdd/F12FPCUSAT0183_ALGjhnT/Data/D[CN]*/*1.fq.gz
+    do 
+        echo $file | sed 's/\/mnt\/pond\/BGIhdd\/F12FPCUSAT0183_ALGjhnT\/Data\///g'
+        gunzip -c $file | grep -c 'GATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+        gunzip -c $file | grep -c '^GATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+        gunzip -c $file | grep -c 'GATCGGAAGAGCACACGTCTGAACTCCAGTCAC$'
+    done
+
+The following sequences were searched for:
+    
+    In Paired End member 1 (in our data files ending in 1.fq.gz):
+    tag5prime = 'GATCGGAAGAGCACACGTCTGAACTCCAGTCAC - INDEX - ATCTCGTATGCCGTCTTCTGCTTG'  
+    tag3prime = 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+
+    In Paired End member 2 (in our data files ending in 2.fq.gz):
+    tag5prime = 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'  
+    tag3prime = 'CAAGCAGAAGACGGCATACGAGAT - INDEX - GTGACTGGAGTTCAGACGTGTGCTCTTCCGATC'
+
+The results of this was somewhat surprising in that I could find the adapter sequences in
+the data we received in batch 1 (the test batch), but not in most (all?) of the remaining
+libraries. My assumption is that BGI removed the adapters in a first pass QC step for
+batch 2. Nonetheless, the orientation of the adapters/primers I found corresponds to my
+expetation above. This should allow me to use cutadapt with these target sequences.
 
 In addition, I was interested in figuring out what the sequence of the index used by
 BGI for multiplexing was, so that I could include that sequence in downstream clean ups
@@ -32,9 +73,9 @@ The following code was used to retrieve the adapter sequence:
     : <<'!'
         This script searches for the 5 prime part of the Truseq index adapter and then 
         cuts the 8 characters following it out of the seqeunce. I keep the most abundant
-        8-mer.
+        8-mer. Not pretty but seems to work...
 
-        FindIndex.sh PATH/TO/DATA OUTFILE
+        FindIndex.sh PATH/TO/DATA
     !
 
     INPATH=$1
@@ -53,11 +94,12 @@ The following code was used to retrieve the adapter sequence:
 
 This yields the following 8 index sequences:
 
-    GTCCGCAC
     ACAGTGAT
+    ATCACGAT
+    GCCAATAT
+    GTCCGCAC
     GTGAAACG
     GTGGCCTT
     GTTTCGGA
-    GCCAATAT
     TGACCAAT
-    ATCACGAT
+
