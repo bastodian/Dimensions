@@ -111,4 +111,5 @@ This yields the following 8 index sequences:
 QC: removal of poor quality bases and contaminants
 --------------------------------------------------
 
-
+Notebook:
+* [FastQ_Filtering.ipynb](https://github.com/bastodian/Dimensions/blob/master/T6/FastQ_Filtering.ipynb)
