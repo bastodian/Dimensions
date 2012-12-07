@@ -26,6 +26,18 @@ do
 done >> NumSeqs.raw 
 ```
 
+Min, Max, and Average of library sizes was calculated. 
+
+```bash
+perl -pe 's/gz\n/gz\t/g' NumSeqs.raw |\
+awk 'NR == 1 { max=$2; min=$1; sum=0 }\
+{ if ($2>max) max=$2; if ($2<min) min=$2; sum+=$2;}\
+END {printf "Min: %d\tMax: %d\tAverage: %f\n", min, max, sum/NR}'
+```
+These stats can be found in: [logs/NumSeqs.txt]
+
+
+
 I was interested to see where the adapters/primers in the libraries are located
 in each read. I did a simple grep search for this purpose.
 
