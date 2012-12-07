@@ -112,4 +112,4 @@ QC: removal of poor quality bases and contaminants
 --------------------------------------------------
 
 Notebook:
-* [FastQ_Filtering.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/FastQ_Filtering.ipynb)
+* [IpythonNotebooks/FastQ_Filtering.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/FastQ_Filtering.ipynb)
