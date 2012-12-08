@@ -19,7 +19,7 @@ encoding; I will address this by converting the qual lines in the fastq files.
 Number of sequences in all libraries were counted using the following command:
 
 ```bash
-for file in /mnt/pond/BGIhdd/F12FPCUSAT0183_ALGjhnT/Data/D[CN]*/*1.fq.gz
+for file in /mnt/pond/BGI/T6/RawData/D[CN]*/*fq.gz
 do 
     echo $file | sed 's/\/mnt\/pond\/BGIhdd\/F12FPCUSAT0183_ALGjhnT\/Data\///g'
     gunzip -c $file |  grep -c 'FC'
