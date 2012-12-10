@@ -3,6 +3,11 @@
 import sys
 
 class Tools:
+    '''
+        The class Tools provides functions for converting between different 
+        Phred quality score encodings and allows retrieving ASCII characters
+        corresponding to integer Phred scores.
+    '''
     def __init__(self):
         # Map to associate raw Phred score to ASCII+33
         self.Phred33 = {\
@@ -168,6 +173,9 @@ class Tools:
                 '~':62,}
 
     def Convert(self, QualLine):
+    '''
+        Converts Illumina >1.3<1.8 phred encoding to Sanger format.
+    '''
         NewQualLine = []
         for Value in QualLine:
             try:
@@ -177,7 +185,13 @@ class Tools:
                 return 'Invalid Format. Are you sure you are trying to convert between the right formats?'
                 sys.exit(0)
         return ''.join(NewQualLine)
-
-    def Test(self):
-        for i, j in self.Phred64.iteritems():
-            print i, j
+    
+    def ReturnASCII(self, PhredScore):
+    '''
+        Takes phred score as argument and returns corresponding ASCII character (Sanger encoding).
+    '''
+        try:
+            return self.Phred33[PhredScore]
+        except KeyError:
+            return 'Cannot retrieve ASCII character. Valid integers range from 0 to 93!'
+            sys.exit(0)
