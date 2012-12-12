@@ -232,6 +232,7 @@ class EndTrim(Convert):
         for i in range(len(self.Quality)):
             if self.Quality[i] >= self.QScore:
                 break
+
         self.Sequence = self.Sequence[i:]
         self.Quality = self.Quality[i:]
 
@@ -242,11 +243,43 @@ class EndTrim(Convert):
                 break
         self.Sequence = self.Sequence[0:i]
         self.Quality = self.Quality[0:i]
+    
+    def IntraTrim(self, NumBases):
+        """ Counts the number of nucleotides below QScore thrshold. NumBases specifies how
+        many nucleotides below the Phred score threshold are acceptable. Sequence is clipped
+        5-3 prime if too many nuclotides fail quality check. """
+        try:
+            assert Numbases == int
+        except AssertionError:
+            print 'Provide number of acceptable nucleotides below Phred threshold as integer argument.'
+            sys.exit(1)
+
+        Count = 0
+        Trim = None
+        # Check how many bases fail QScore test
+        for i in range(len(self.Quality)):
+            if self.Quality[i] < self.QScore:
+                Count += 1
+                # At first failure set location for trimming
+                if Trim == None:
+                    Tim = i
+
+        if Count >= NumBases:
+            self.Sequence = self.Sequence[:Trim]
+            self.Quality = self.Quality[:Trim]
+
+    def MinLength(self, Length):
+        """ Sets Sequence and Quality line to zero length if they are below threshold length. """
+        try:
+            assert Length == int
+        except AssertionError:
+            print 'Provide min length of seuqence as integer argument.'
+            sys.exit(1)
+        
+        if self.Sequence < Length:
+            self.Sequence = None
+            self.Quality = None
 
     def Retrieve(self):
         """ Retrieve the sequence and quality line. """
         return self.Sequence, self.Quality
-    
-# TODO implement intercrap and length trim -- what about pairing?
-
-#       Make 5 and 3 prime trimmers check up to 5 base pairs into sequence
