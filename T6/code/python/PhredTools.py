@@ -4,7 +4,7 @@ import sys
 
 class Convert(object):
     """
-        The class Covert provides functions for converting between different 
+        The class Convert provides functions for converting between different 
         Phred quality score encodings and allows retrieving ASCII characters
         corresponding to integer Phred scores.
     """
