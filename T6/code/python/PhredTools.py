@@ -225,16 +225,39 @@ class EndTrim(Convert):
             self.QScore = QScore
             print 'Quality score not an integer!'
             sys.exit(1)
-        print self.QScore, self.Sequence, self.Quality
+        print self.QScore, '\n', self.Sequence, '\n', self.Quality
 
-    def FivePrime(self):
-        """ Trim from the 5 prime end of a sequence. """
-        for i in range(len(self.Quality)):
-            if self.Quality[i] >= self.QScore:
-                break
+    def FivePrime(self, Crawl=0):
+        """ Trim from the 5 prime end of a sequence. Trims until first nucleotide passing threshold is encountered.
+        By setting Crawl to be a positive integer the search can be extended (eg, Crawl=5 will make the search continue
+        for 5 nucleotides downstream of the first one that passed phred scores threshold). """
+        try:
+            assert Crawl >= 0
+            if Crawl == 0:
+                for i in range(len(self.Quality)):
+                    if self.Quality[i] >= self.QScore:
+                        Start = i + 1
+                        break
 
-        self.Sequence = self.Sequence[i:]
-        self.Quality = self.Quality[i:]
+                self.Sequence = self.Sequence[i:]
+                self.Quality = self.Quality[i:]
+            else:
+                for i in range(len(self.Quality)):
+                    if self.Quality[i] >= self.QScore:
+                        Start = i + 1
+                        break
+                Count = 0
+                for j in self.Quality[Start:(Crawl + Start)]:
+                    Count += 1
+                    if j < self.QScore:
+                        Trim = (Start + Count)
+                    elif Count == Crawl:
+                        break
+                self.Sequence = self.Sequence[Trim:]
+                self.Quality = self.Quality[Trim:]
+        except AssertionError:
+            print 'Crawl variable passed to function must be >= 0; default is 0.'
+            sys.exit(1)
 
     def ThreePrime(self):
         """ Trim from the 3 prime end of a sequence. """
@@ -244,42 +267,40 @@ class EndTrim(Convert):
         self.Sequence = self.Sequence[0:i]
         self.Quality = self.Quality[0:i]
     
-    def IntraTrim(self, NumBases):
-        """ Counts the number of nucleotides below QScore thrshold. NumBases specifies how
+    def IntraTrim(self, NumBases=None):
+        """ Counts the number of nucleotides below QScore threshold. NumBases specifies how
         many nucleotides below the Phred score threshold are acceptable. Sequence is clipped
         5-3 prime if too many nuclotides fail quality check. """
         try:
-            assert Numbases == int
+            assert NumBases >= 0 and type(NumBases) == int
+            Count = 0
+            Trim = None
+            # Check how many bases fail QScore test
+            for i in range(len(self.Quality)):
+                if self.Quality[i] < self.QScore:
+                    Count += 1
+                    if Trim == None:
+                        Trim = i
+            if Count >= NumBases:
+                self.Sequence = self.Sequence[:Trim]
+                self.Quality = self.Quality[:Trim]
         except AssertionError:
             print 'Provide number of acceptable nucleotides below Phred threshold as integer argument.'
             sys.exit(1)
 
-        Count = 0
-        Trim = None
-        # Check how many bases fail QScore test
-        for i in range(len(self.Quality)):
-            if self.Quality[i] < self.QScore:
-                Count += 1
-                # At first failure set location for trimming
-                if Trim == None:
-                    Tim = i
-
-        if Count >= NumBases:
-            self.Sequence = self.Sequence[:Trim]
-            self.Quality = self.Quality[:Trim]
-
-    def MinLength(self, Length):
-        """ Sets Sequence and Quality line to zero length if they are below threshold length. """
+    def MinLength(self, Length=None):
+        """ Sets Sequence and Quality line to None if they are below threshold length. This may break
+        your downstream pipe if you are not careful how you handle returns from this function. Safeguard 
+        by using a statement like "if None in trim.Retrieve(): pass" when using MinLength function. """
         try:
-            assert Length == int
+            assert Length >= 0 and type(Length) == int
+            if len(self.Sequence) < Length:
+                self.Sequence = None
+                self.Quality = None
         except AssertionError:
-            print 'Provide min length of seuqence as integer argument.'
+            print 'Provide min length of seqence as integer argument.'
             sys.exit(1)
         
-        if self.Sequence < Length:
-            self.Sequence = None
-            self.Quality = None
-
     def Retrieve(self):
         """ Retrieve the sequence and quality line. """
         return self.Sequence, self.Quality
