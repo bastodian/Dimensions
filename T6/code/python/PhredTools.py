@@ -261,7 +261,9 @@ class EndTrim(Convert):
             sys.exit(1)
 
     def ThreePrime(self, Crawl=0):
-        """ Trim from the 3 prime end of a sequence. """
+        """ Trim from the 3 prime end of a sequence. Trims until first nucleotide passing threshold is encountered.
+        By setting Crawl to be a positive integer the search can be extended (eg, Crawl=5 will make the search continue
+        for 5 nucleotides upstream of the first one that passed phred scores threshold). """
         try:
             assert Crawl >= 0 and Crawl <= len(self.Quality)
             if Crawl == 0:
