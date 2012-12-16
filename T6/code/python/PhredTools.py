@@ -206,13 +206,13 @@ class EndTrim(Convert):
         try:
             assert type(Sequence) == str
             self.Sequence = Sequence
-        except KeyError:
+        except AssertionError:
             print 'Sequence not a string!'
             sys.exit(1)
         try:
             assert type(Quality) == str
             self.Quality = Quality
-        except KeyError:
+        except AssertionError:
             print 'Quality line not a string!'
             sys.exit(1)
         try:
@@ -221,12 +221,12 @@ class EndTrim(Convert):
 #            self.QScore = self.Convert.PhredToASCII(QScore)
             super(EndTrim, self).__init__()
             self.QScore = super(EndTrim, self).PhredToASCII(QScore)
-        except KeyError:
+        except AssertionError:
             self.QScore = QScore
             print 'Quality score not an integer!'
             sys.exit(1)
-        #TODO remove the following line after debugging
-        print self.QScore, '\n', self.Sequence, '\n', self.Quality
+        #DEBUG Next line prints the input to the program
+        #print self.QScore, '\n', self.Sequence, '\n', self.Quality
 
     def FivePrime(self, Crawl=0):
         """ Trim from the 5 prime end of a sequence. Trims until first nucleotide passing threshold is encountered.
