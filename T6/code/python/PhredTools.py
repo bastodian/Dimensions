@@ -223,7 +223,7 @@ class EndTrim(Convert):
             self.QScore = super(EndTrim, self).PhredToASCII(QScore)
         except AssertionError:
             self.QScore = QScore
-            print 'Quality score not an integer!'
+            print 'Quality score not an integer or out of range (0->93)!'
             sys.exit(1)
         #DEBUG Next line prints the input to the program
         #print self.QScore, '\n', self.Sequence, '\n', self.Quality
@@ -233,7 +233,7 @@ class EndTrim(Convert):
         By setting Crawl to be a positive integer the search can be extended (eg, Crawl=5 will make the search continue
         for 5 nucleotides downstream of the first one that passed phred scores threshold). """
         try:
-            assert Crawl >= 0 and Crawl <= len(self.Quality)
+            assert Crawl >= 0 #and Crawl <= len(self.Quality)
             if Crawl == 0:
                 for i in range(len(self.Quality)):
                     if self.Quality[i] >= self.QScore:
@@ -247,7 +247,7 @@ class EndTrim(Convert):
                         Start = i + 1
                         break
                 Count = 0
-                Trim = None
+                Trim = Start - 1
                 for j in self.Quality[Start:(Crawl + Start)]:
                     Count += 1
                     if j < self.QScore:
@@ -265,33 +265,31 @@ class EndTrim(Convert):
         By setting Crawl to be a positive integer the search can be extended (eg, Crawl=5 will make the search continue
         for 5 nucleotides upstream of the first one that passed phred scores threshold). """
         try:
-            assert Crawl >= 0 and Crawl <= len(self.Quality)
+            assert Crawl >= 0 #and Crawl <= len(self.Quality)
             if Crawl == 0:
                 for i in range(len(self.Quality)-1,-1,-1):
                     if self.Quality[i] >= self.QScore:
                         Start = i + 1
                         break
-                self.Sequence = self.Sequence[0:i]
-                self.Quality = self.Quality[0:i]
+                self.Sequence = self.Sequence[0:(i + 1)]
+                self.Quality = self.Quality[0:(i + 1)]
             else:
                 for i in range(len(self.Quality)-1,-1,-1):
-                    print self.Quality[i], i
                     if self.Quality[i] >= self.QScore:
-                        Start = i# + 1
-                        print "start: ", Start, self.Quality[i]
+                        Start = (len(self.Quality) - i) + 1
                         break
-                Count = -1
-                Trim = None
-                for j in self.Quality[(Start - Crawl):Start]:
+                Count = 0
+                Trim = Start - 2
+                RevSeq = self.Sequence[::-1]
+                RevQual = self.Quality[::-1]
+                for j in RevQual[Start:(Start + Crawl)]:
                     Count += 1
-                    print j, Count
                     if j < self.QScore:
-                        Trim = (Start - Count)
-                        print "trim: ", Trim
+                        Trim = (Start + Count)
                     elif Count == Crawl:
                         break
-                self.Sequence = self.Sequence[:Trim]
-                self.Quality = self.Quality[:Trim]
+                self.Sequence = RevSeq[Trim:][::-1]
+                self.Quality = RevQual[Trim:][::-1]
         except AssertionError:
             print 'Crawl variable passed to function must be >= 0 and <= length of sequence; default is 0.'
             sys.exit(1)
