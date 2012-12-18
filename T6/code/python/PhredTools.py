@@ -242,10 +242,16 @@ class EndTrim(Convert):
                 self.Sequence = self.Sequence[i:]
                 self.Quality = self.Quality[i:]
             else:
+                # Initialize Start and Trim, so that they are available
+                Start = 0
+                Trim = Start
+                # Find the first base below Phred threshold
                 for i in range(len(self.Quality)):
                     if self.Quality[i] >= self.QScore:
                         Start = i + 1
                         break
+                # Move beyond first base that failed test and do a more
+                # aggressive trim
                 Count = 0
                 Trim = Start - 1
                 for j in self.Quality[Start:(Crawl + Start)]:
@@ -254,6 +260,7 @@ class EndTrim(Convert):
                         Trim = (Start + Count)
                     elif Count == Crawl:
                         break
+                # Trim the sequence
                 self.Sequence = self.Sequence[Trim:]
                 self.Quality = self.Quality[Trim:]
         except AssertionError:
@@ -274,10 +281,16 @@ class EndTrim(Convert):
                 self.Sequence = self.Sequence[0:(i + 1)]
                 self.Quality = self.Quality[0:(i + 1)]
             else:
+                # Initialize Start and Trim, so that they are available
+                Start = (len(self.Quality))
+                Trim = Start
+                # Find the first base below Phred threshold
                 for i in range(len(self.Quality)-1,-1,-1):
                     if self.Quality[i] >= self.QScore:
                         Start = (len(self.Quality) - i) + 1
                         break
+                # Move beyond first base that failed test and do a more
+                # aggressive trim
                 Count = 0
                 Trim = Start - 2
                 RevSeq = self.Sequence[::-1]
@@ -288,6 +301,7 @@ class EndTrim(Convert):
                         Trim = (Start + Count)
                     elif Count == Crawl:
                         break
+                # Trim the sequence
                 self.Sequence = RevSeq[Trim:][::-1]
                 self.Quality = RevQual[Trim:][::-1]
         except AssertionError:
@@ -330,4 +344,10 @@ class EndTrim(Convert):
         
     def Retrieve(self):
         """ Retrieve the sequence and quality line. """
-        return self.Sequence, self.Quality
+        try:
+            if len(self.Sequence) == 0:
+                self.Sequence = None
+                self.Quality = None
+            return self.Sequence, self.Quality
+        except TypeError:
+            return self.Sequence, self.Quality
