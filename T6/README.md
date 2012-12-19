@@ -111,17 +111,19 @@ done
 
 This yields the following 8 index sequences:
 
-* ACAGTGAT
-* ATCACGAT
-* GCCAATAT
-* GTCCGCAC
-* GTGAAACG
-* GTGGCCTT
-* GTTTCGGA
-* TGACCAAT
+* CENSORED
+* CENSORED
+* CENSORED
+* CENSORED
+* CENSORED
+* CENSORED
+* CENSORED
+* CENSORED
 
 QC: removal of poor quality bases and contaminants
 --------------------------------------------------
 
-Notebook:
-* [IpythonNotebooks/FastQ_Filtering.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/FastQ_Filtering.ipynb)
+Quality control of read-sets is documented in the following Ipython notebook. Obtain the raw read data in gzipped fastq format, download the python script
+from the following notebook and run it over the raw data to obtain cleaned and paired PE read-sets.
+
+* [IpythonNotebooks/QTrim.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/QTrim.ipynb)
