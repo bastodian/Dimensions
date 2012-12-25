@@ -127,3 +127,8 @@ Quality control of read-sets is documented in the following Ipython notebook. Ob
 from the following notebook and run it over the raw data to obtain cleaned and paired PE read-sets.
 
 * [IpythonNotebooks/QTrim.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/QTrim.ipynb)
+
+After trimming datasets as described above, monoculture replicates were combined for each species and assembled using Trnity. The assemblies can be re-generated
+using the following notebook.
+
+* PUT IPYTHON NOTEBOOK HERE
