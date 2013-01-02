@@ -9,6 +9,10 @@ of the experiment. Scripts, programs, and modules used during the analysis can b
 found in the code folder, while log files are in the logs folder and linked to 
 in this documentation.
 
+* [Initial data exploration](https://github.com/bastodian/Dimensions/tree/master/T6#Initial QC)
+* [QC](https://github.com/bastodian/Dimensions/tree/master/T6#QC)
+* [Transcriptome Assembly and Annotation](https://github.com/bastodian/Dimensions/tree/master/T6#Assembly and Annotation)
+
 Initial QC
 ----------
 
@@ -120,15 +124,22 @@ This yields the following 8 index sequences:
 * CENSORED
 * CENSORED
 
-QC: removal of poor quality bases and contaminants
---------------------------------------------------
+QC
+--
 
 Quality control of read-sets is documented in the following Ipython notebook. Obtain the raw read data in gzipped fastq format, download the python script
 from the following notebook and run it over the raw data to obtain cleaned and paired PE read-sets.
 
 * [IpythonNotebooks/QTrim.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/QTrim.ipynb)
 
+Assembly and Annotation
+-----------------------
+
 After trimming datasets as described above, monoculture replicates were combined for each species and assembled using Trnity. The assemblies can be re-generated
 using the following notebook.
 
 * [IpythonNotebooks/Assembly.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/Assembly.ipynb)
+
+Following the assembly of monoculture transcriptomes, genes of interest were identified using HMMer and the Pfam HMM profiles. Genes identified using the Pfam HMMs were then verified against the annotated Chlamydomans reinhardii transcripts using BLAST.
+
+* TBD
