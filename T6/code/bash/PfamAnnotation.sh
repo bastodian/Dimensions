@@ -2,12 +2,16 @@
 
 : <<'!'
     Script uses Translate.py script to translate all 6 reading frames of reference transcriptomes;
-    translated transcripts get piped into HMMER3's hmmscan to search against selected Pfam HMMs.
+    translated transcripts get piped into HMMER3s hmmscan to search against selected Pfam HMMs.
 
     Author: Bastian Bentlage
     Email: bastian.bentlage@gmail.com
 !
 
+# First move into the execution directory to preserve relatuve links below
+cd "$(dirname "$0")"
+
+# then do some stuff...
 for File in ~/DimensionsData/T6/Assemblies/DC*/Trinity.fasta ## Directory to Assemblies hardcoded
 do
     TEMP=${File##?*Assemblies?}
@@ -15,9 +19,8 @@ do
     ../python/translate.py $File | \
         ../bin/hmmer-3.0-linux-x86_64/hmmscan \
         --noali \
-        --cpu 24 \
         --cut_ga \
-        --tblout ../../logs/$FileStem.tbl \
+        --domtblout ../../logs/$FileStem.domtbl \
         ../../Pfam/Dimensions.PfamA \
         - ## Take input from stdout
-done &> /dev/null
+done &> /dev/null &
