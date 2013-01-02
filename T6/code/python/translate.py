@@ -3,6 +3,10 @@
 '''
    Script to translate the sequences in an input Fasta file using all
    6 reading frames (this includes the reverse complement strand). 
+
+   Author: Bastian Bentlage
+   Email: bastian.bentlage@gmail.com
+   License: Creative Commons Attribution
 '''
 
 from sys import argv

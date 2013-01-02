@@ -16,6 +16,8 @@ in this documentation.
 Initial QC
 ----------
 
+* [Back to Top](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
+
 The quality of all libraries was assessed using FASTQC. IMPORTANT: the libraries follow
 the old Illumina encoding with a Phred ASCII +64 offset rather than standard Sanger +33 
 encoding; I will address this by converting the qual lines in the fastq files.
@@ -127,6 +129,8 @@ This yields the following 8 index sequences:
 QC
 --
 
+* [Back to Top](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
+
 Quality control of read-sets is documented in the following Ipython notebook. Obtain the raw read data in gzipped fastq format, download the python script
 from the following notebook and run it over the raw data to obtain cleaned and paired PE read-sets.
 
@@ -135,13 +139,15 @@ from the following notebook and run it over the raw data to obtain cleaned and p
 Assembly and Annotation
 -----------------------
 
+* [Back to Top](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
+
 After trimming datasets as described above, monoculture replicates were combined for each species and assembled using Trnity. The assemblies can be re-generated
 using the following notebook.
 
 * [IpythonNotebooks/Assembly.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/Assembly.ipynb)
 
 Following the assembly of monoculture transcriptomes, genes of interest were identified using HMMer and the Pfam HMM profiles. Significance
-of hits is assessed using the GA threshold encoded in Pfam HMMs.
+of hits is assessed using the GA threshold encoded in Pfam HMMs. DEPENDENCIES: BioPython.
 
 * [code/bash/PfamAnnotation.sh](https://github.com/bastodian/Dimensions/blob/master/T6/code/bash/PfamAnnotation.sh)
 
