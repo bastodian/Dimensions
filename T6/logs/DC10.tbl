@@ -1,0 +1,23 @@
+#                                                               --- full sequence ---- --- best 1 domain ---- --- domain number estimation ----
+# target name        accession  query name           accession    E-value  score  bias   E-value  score  bias   exp reg clu  ov env dom rep inc description of target
+#------------------- ---------- -------------------- ---------- --------- ------ ----- --------- ------ -----   --- --- --- --- --- --- --- --- ---------------------
+Glycolytic           PF00274.14 comp815_c0_seq1_revCompRF:1 -            9.1e-31   98.7   1.9   1.1e-30   98.4   1.3   1.1   1   0   0   1   1   1   1 Fructose-bisphosphate aldolase class-I
+PSI_PSAK             PF01241.13 comp984_c0_seq1_RF:1 -            2.1e-24   77.7   1.1   3.1e-24   77.1   0.7   1.3   1   0   0   1   1   1   1 Photosystem I psaG / psaK
+Hexokinase_2         PF03727.11 comp1053_c0_seq1_revCompRF:2 -            8.4e-20   63.2   1.1   9.3e-20   63.0   0.7   1.0   1   0   0   1   1   1   1 Hexokinase
+Hexokinase_2         PF03727.11 comp1053_c1_seq1_RF:1 -            4.9e-45  145.8   0.0   5.4e-45  145.7   0.0   1.0   1   0   0   1   1   1   1 Hexokinase
+Gp_dh_N              PF00044.19 comp1199_c0_seq1_RF:0 -            1.3e-22   72.6   0.1   1.5e-22   72.5   0.1   1.0   1   0   0   1   1   1   1 Glyceraldehyde 3-phosphate dehydrogenase, NAD binding domain
+Alk_phosphatase      PF00245.15 comp1238_c0_seq1_RF:0 -            5.6e-22   70.2   0.0   5.3e-21   66.9   0.0   1.9   2   0   0   2   2   1   1 Alkaline phosphatase
+Alk_phosphatase      PF00245.15 comp1238_c1_seq1_RF:0 -            2.7e-19   61.3   0.0   3.3e-19   61.0   0.0   1.1   1   0   0   1   1   1   1 Alkaline phosphatase
+Chloroa_b-bind       PF00504.16 comp1304_c1_seq1_revCompRF:1 -              1e-34  112.3   0.0   1.4e-34  111.8   0.0   1.2   1   0   0   1   1   1   1 Chlorophyll A-B binding protein
+Aconitase            PF00330.15 comp1467_c0_seq1_RF:0 -            1.2e-20   65.6   0.2   5.8e-16   50.2   0.1   2.0   1   1   1   2   2   1   1 Aconitase family (aconitate hydratase)
+PK                   PF00224.16 comp1814_c0_seq1_revCompRF:1 -           6.5e-104  339.4   3.4  8.1e-104  339.1   2.4   1.1   1   0   0   1   1   1   1 Pyruvate kinase, barrel domain
+PsbX                 PF06596.6  comp1923_c0_seq1_revCompRF:2 -            3.8e-13   41.2   0.2   3.8e-13   41.2   0.2   2.1   2   0   0   2   2   1   1 Photosystem II reaction centre X protein (PsbX)
+His_Phos_1           PF00300.17 comp3259_c0_seq1_revCompRF:1 -            1.7e-14   46.4   0.0   1.8e-14   46.3   0.0   1.0   1   0   0   1   1   1   1 Histidine phosphatase superfamily (branch 1)
+FTR1                 PF03239.9  comp3875_c0_seq1_RF:1 -            1.4e-12   39.3   0.1   1.4e-12   39.3   0.1   1.0   1   0   0   1   1   1   1 Iron permease FTR1 family
+FTR1                 PF03239.9  comp3875_c1_seq1_revCompRF:2 -            3.7e-07   21.6   2.9   3.7e-07   21.6   2.0   1.0   1   0   0   1   1   1   1 Iron permease FTR1 family
+Mo-co_dimer          PF03404.11 comp4092_c0_seq1_RF:0 -            3.8e-14   44.7   1.3     2e-13   42.4   0.9   1.8   1   1   0   1   1   1   1 Mo-co oxidoreductase dimerisation domain
+Oxidored_molyb       PF00174.14 comp4092_c1_seq1_revCompRF:1 -            4.5e-17   54.2   0.0   5.8e-17   53.8   0.0   1.2   1   0   0   1   1   1   1 Oxidoreductase molybdopterin binding domain
+NAD_binding_1        PF00175.16 comp5089_c0_seq1_RF:1 -            1.4e-13   43.7   0.0   1.5e-13   43.6   0.0   1.0   1   0   0   1   1   1   1 Oxidoreductase NAD-binding domain
+Gp_dh_N              PF00044.19 comp5349_c0_seq1_revCompRF:2 -            3.9e-30   97.1   0.2   4.3e-30   96.9   0.2   1.0   1   0   0   1   1   1   1 Glyceraldehyde 3-phosphate dehydrogenase, NAD binding domain
+Metalloenzyme        PF01676.13 comp6157_c1_seq1_RF:2 -            1.5e-30   98.5   0.0   1.9e-30   98.2   0.0   1.1   1   0   0   1   1   1   1 Metalloenzyme superfamily
+Citrate_synt         PF00285.16 comp6337_c0_seq1_revCompRF:2 -            6.4e-99  323.2   0.0   8.3e-99  322.8   0.0   1.1   1   0   0   1   1   1   1 Citrate s

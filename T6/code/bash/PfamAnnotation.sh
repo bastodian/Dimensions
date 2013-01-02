@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# Script uses Translate.py script to translate all 6 reading frames of reference transcriptomes;
-# translated transcripts get piped into HMMER3's hmmscan to search against selected Pfam HMMs.
-#
-# Author: Bastian Bentlage
-# Email: bastian.bentlage@gmail.com
+: <<'!'
+    Script uses Translate.py script to translate all 6 reading frames of reference transcriptomes;
+    translated transcripts get piped into HMMER3's hmmscan to search against selected Pfam HMMs.
+
+    Author: Bastian Bentlage
+    Email: bastian.bentlage@gmail.com
+!
 
 for File in ~/DimensionsData/T6/Assemblies/DC*/Trinity.fasta ## Directory to Assemblies hardcoded
 do
