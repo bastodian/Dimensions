@@ -13,10 +13,8 @@ in this documentation.
 * [QC](https://github.com/bastodian/Dimensions/tree/master/T6#qc)
 * [Transcriptome Assembly and Annotation](https://github.com/bastodian/Dimensions/tree/master/T6#assembly-and-annotation)
 
-Initial QC
+Initial QC [Back to Top](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
 ----------
-
-* [Back to Top](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
 
 The quality of all libraries was assessed using FASTQC. IMPORTANT: the libraries follow
 the old Illumina encoding with a Phred ASCII +64 offset rather than standard Sanger +33 
