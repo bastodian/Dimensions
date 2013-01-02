@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+'''
+    Author: Bastian Bentlage
+    Email: bastian.bentlage@gmail.com
+    License: Creative Commons Attribution
+'''
+
 import sys
 
 class Convert(object):
