@@ -143,6 +143,6 @@ using the following notebook.
 Following the assembly of monoculture transcriptomes, genes of interest were identified using HMMer and the Pfam HMM profiles. Significance
 of hits is assessed using the GA threshold encoded in Pfam HMMs.
 
-* [code/bash/PfamAnnotation.sh]
+* [code/bash/PfamAnnotation.sh](https://github.com/bastodian/Dimensions/blob/master/T6/code/bash/PfamAnnotation.sh)
 
 Genes identified using the Pfam HMMs were then verified against the annotated Chlamydomans reinhardii transcripts using BLAST.
