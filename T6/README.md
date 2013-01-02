@@ -9,9 +9,9 @@ of the experiment. Scripts, programs, and modules used during the analysis can b
 found in the code folder, while log files are in the logs folder and linked to 
 in this documentation.
 
-* [Initial data exploration](https://github.com/bastodian/Dimensions/tree/master/T6#Initial QC)
-* [QC](https://github.com/bastodian/Dimensions/tree/master/T6#QC)
-* [Transcriptome Assembly and Annotation](https://github.com/bastodian/Dimensions/tree/master/T6#Assembly and Annotation)
+* [Initial data exploration](https://github.com/bastodian/Dimensions/tree/master/T6#initial-qc)
+* [QC](https://github.com/bastodian/Dimensions/tree/master/T6#qc)
+* [Transcriptome Assembly and Annotation](https://github.com/bastodian/Dimensions/tree/master/T6#assembly-and-annotation)
 
 Initial QC
 ----------
