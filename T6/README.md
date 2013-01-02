@@ -131,4 +131,4 @@ from the following notebook and run it over the raw data to obtain cleaned and p
 After trimming datasets as described above, monoculture replicates were combined for each species and assembled using Trnity. The assemblies can be re-generated
 using the following notebook.
 
-* PUT IPYTHON NOTEBOOK HERE
+* [IpythonNotebooks/Assembly.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/Assembly.ipynb)
