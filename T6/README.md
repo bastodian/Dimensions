@@ -34,12 +34,9 @@ done >> NumSeqs.raw
 Min, Max, and Average of library sizes was calculated. 
 
 ```bash
-perl -pe 's/gz\n/gz\t/g' NumSeqs.raw |\
-awk 'NR == 1 { max=$2; min=$1; sum=0 }\
-{ if ($2>max) max=$2; if ($2<min) min=$2; sum+=$2;}\
-END {printf "Min: %d\tMax: %d\tAverage: %f\n", min, max, sum/NR}'
+perl -pe 's/gz\n/gz\t/g' NumSeqs.raw | awk 'NR == 1 { max=$2; min=$1; sum=0 } { if ($2>max) max=$2; if ($2<min) min=$2; sum+=$2;} END {printf "Min: %d\tMax: %d\tAverage: %f\n", min, max, sum/NR}'
 ```
-These stats can be found [here](https://github.com/bastodian/Dimensions/blob/master/T6/logs/NumSeqs.txt)
+These stats can be found [here](https://github.com/bastodian/Dimensions/blob/master/T6/logs/NumSeqs.raw.txt)
 
 
 
