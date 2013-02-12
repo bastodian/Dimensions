@@ -119,3 +119,15 @@ N90 Length 509
 
 
 
+filename ../../Assemblies/DC80/Trinity.fasta
+Total Contigs 59560
+Total Trimmed Contigs 59560
+Total Length 46817058
+Min contig size 201
+Median contig size 456
+Mean contig size 786
+Max contig size 10666
+N50 Contig 10738
+N50 Length 1267
+N90 Contig 40811
+N90 Length 314
