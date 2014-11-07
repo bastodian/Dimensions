@@ -1,0 +1,107 @@
+#!/usr/bin/env python
+
+'''
+Links Trinity gene IDs to gene family (PANTHER) IDs summing all values
+for genes that fall within the same gene family.
+
+This script links Panther IDs to gene IDs using the relationships
+described in the files linking PANTHER gene family IDs to gene IDs
+(../*algal.panther). Only family IDs (PTHRXXX) are considered but not subfamilies 
+(PTHRXXX:SFXXX). The script uses the gene id (compX_cX) rather than 
+transcript ID (compX_cX_seqX) to retrieve gene-level counts from RSEM
+mapping files stored in ../RSEM. FPKM counts of the same gene family (PTHR)
+ID are summed. If a gene cannot be placed into a single gene family (ie, annotations
+confict between different contigs/transcripts) belonging to the same gene the
+gene is omitted from consideration.
+
+'''
+
+import sys, os, glob, itertools
+
+# Gene ID to PTHR ID maps are stored in the following files
+GeneIDs = {
+        '1': '../Chl.algal.panther',
+        '2': '../Clo.algal.panther',
+        '3': '../Cos.algal.panther',
+        '4': '../Pan.algal.panther',
+        '5': '../Sce.algal.panther',
+        '6': '../Sel.algal.panther',
+        '7': '../Sta.algal.panther',
+        '8': '../Tet.algal.panther'
+        }
+
+# Counts are stored in the following directory
+FPKMcounts = '../RSEM'
+
+# Create a list
+AllPanthers = []
+
+for FPKMfile in glob.glob(os.path.join(FPKMcounts, '*')):
+    # Reference transcriptome
+    Reference = GeneIDs[FPKMfile.split('.')[-1]]
+    # The Bottle ID
+    BottleID = '_'.join(['_'.join(FPKMfile.split('/')[2].split('.')[0:2]), str(FPKMfile.split('/')[2].split('.')[-1])])
+    # Read Gene Panther annotations contained in *algal.panther
+    # create a dictionary of isoform Panther mapping
+    GeneDict = {}
+    with open(Reference, 'rU') as GeneFile:
+        for Line in GeneFile:
+            CompID = '_'.join(Line.split()[0].split('|')[1].split('_')[0:2])
+            PantherID = Line.split()[1].split(':')[0]
+            # Create a list of all PantherIDs
+            if PantherID not in frozenset(AllPanthers):
+                AllPanthers.append(PantherID)
+            try:
+                if PantherID not in GeneDict[CompID]:
+                    GeneDict[CompID].append(PantherID)
+            except KeyError:
+                GeneDict[CompID] = []
+                GeneDict[CompID].append(PantherID)
+
+    # Add FPKM counts to Trinity component annotation dictionary
+    with open(FPKMfile, 'rU') as FPKMs:
+        for Line in FPKMs:
+            if 'FPKM' not in Line:
+                CompID = Line.split()[0]
+                Length = float(Line.split()[2])
+                EffectiveLength = float(Line.split()[3])
+                ExpectedCount = float(Line.split()[4])
+                TPM = float(Line.split()[5])
+                FPKM = float(Line.split()[6])
+                try:
+                    GeneDict[CompID].append((Length, EffectiveLength, ExpectedCount, TPM, FPKM))
+                except KeyError:
+                    continue
+            
+    # Write annotation and abundance
+    PantherDict = {}
+    for CompID, j in GeneDict.iteritems():
+        # We only keep those isoforms that can be assigned to one PANTHER ID
+        if len(j) == 2:
+            try:
+#                print FPKMfile
+#                print CompID, j
+#                print j[0], j[1]
+#                print PantherDict[j[0]], j[1]
+                CombinedLines = map(sum, itertools.izip(PantherDict[j[0]], j[1]))
+#                print CombinedLines
+                PantherDict[j[0]] = CombinedLines
+            except KeyError:
+                PantherDict[j[0]] = j[1]
+        else:
+            continue
+    
+    Outfile = BottleID
+    PantherSet = []
+    with open('SharedPantherIDs', 'r') as Shared:
+        for PTHR in Shared:
+            PantherSet.append(PTHR.rstrip())
+    PantherSet = set(PantherSet)
+    with open(Outfile, 'w') as Out:
+        sys.stdout.write('Writing %s...\n\n' % (Outfile))
+        Out.write('%s\n' % '\t'.join([x for x in ('GeneFamily', 'length', 'effective_length', 'expected_count', 'TPM', 'FPKM')]))
+        for PantherID, Line in PantherDict.iteritems():
+            if PantherID in PantherSet:
+                Out.write('%s\t%s\n' % (PantherID, '\t'.join([str(x) for x in Line])))
+            else:
+                continue
