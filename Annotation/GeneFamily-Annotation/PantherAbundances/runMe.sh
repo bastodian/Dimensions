@@ -7,6 +7,11 @@
 # This results in 187 gene family count files (DC*); log files for the
 # transformation are written to the logs directory
 
+for File in ../RSEM/*
+do
+    gunzip $File
+done
+
 ./PantherAbundanceConvert.py
 
 # The following combines gene family counts from the 187 separate fies into 
