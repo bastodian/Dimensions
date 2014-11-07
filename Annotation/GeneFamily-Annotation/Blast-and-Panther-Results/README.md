@@ -34,9 +34,11 @@ All 'green' sequence IDs were extracted and are stored in [plantIDs](https://git
 Identification of gene families
 -------------------------------
 
-Panther HMMs are scanned against the taxonomically filteres sequence file (algal.fst)
+Panther HMMs are scanned against the taxonomically filtered sequence file (algal.fst)
 and the outputs are written to algal.panther files. This creates a mapping of 
 gene family (Panther) ID to gene ID (compID).
+
+[PantherHMM search](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/Blast-and-Panther-Results/Panther.sh)
 
 
 ```bash
