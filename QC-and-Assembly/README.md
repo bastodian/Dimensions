@@ -111,17 +111,6 @@ do
 done
 ```
 
-This yields the following 8 index sequences:
-
-* CENSORED
-* CENSORED
-* CENSORED
-* CENSORED
-* CENSORED
-* CENSORED
-* CENSORED
-* CENSORED
-
 QC
 --
 [Back to Overview](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
@@ -131,7 +120,7 @@ from the following notebook and run it over the raw data to obtain cleaned and p
 
 * [IpythonNotebooks/QTrim.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/QTrim.ipynb)
 
-Assembly and Annotation
+Assembly and Read Mapping 
 -----------------------
 [Back to Overview](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
 
@@ -139,3 +128,7 @@ After trimming datasets as described above, monoculture replicates were combined
 using the following notebook.
 
 * [IpythonNotebooks/Assembly.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/Assembly.ipynb)
+
+The following Ipython notebook documents how the cultures were mapped against the monocultures using RSEM.
+
+* [IpythonNotebooks/RSEM-Mapping.ipynb](http://nbviewer.ipython.org/urls/raw.githubusercontent.com/bastodian/Dimensions/master/QC-and-Assembly/IpythonNotebooks/RSEM-Mapping.ipynb)
