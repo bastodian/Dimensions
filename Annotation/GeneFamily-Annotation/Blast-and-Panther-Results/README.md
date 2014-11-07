@@ -11,10 +11,16 @@ Sprot and Trembl files were combined to create a taxonomic filter in which
 only the best BLAST hits that hit a 'green' taxon (alga or plant) are 
 retained. 
 
+The IDs of the UniProt sequences that are contained in the database can be
+found in [UniProt_Cutsom-SeqIDs](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/Blast-and-Panther-Results/UniProt_Custom-SeqIDs)
+
 All 'green' sequence IDs were extracted and are stored in [plantIDs](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/Blast-and-Panther-Results/plantIDs)
 
 ```bash
-#BLAST.sh will BLAST Taxon.fst against Uniprot and creates Taxon.out
+# BLAST.sh will BLAST Taxon.fst against Uniprot and creates Taxon.out
+#
+# Uniprot.db is the custom Uniprot database that can be recreated using
+# the gene IDs stored in UniProt_Custom-SeqIDs
 
 ./BLAST.sh Uniprot.db
 
