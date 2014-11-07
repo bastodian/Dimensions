@@ -13,6 +13,9 @@ BLAST searches were used to remove potential contaminant sequences before
 performing HMM searches of Panther gene family HMMs against the monocultures
 transcripomes.
 
+Data and scripts
+----------------
+
 BLAST and HMM searches are documented in [BLAST and PANTHER HMM searches](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/Blast-and-Panther-Results)
 
 Summing of read counts across count files are documented in [Gene Family abundance conversion](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/PantherAbundances)
