@@ -4,7 +4,7 @@ Analysis of final time point of experiment (T6)
 Overview
 --------
 
-We received libraries from 200 samples for the analysis of the final timepoint
+We received libraries from 108 samples for the analysis of the final timepoint
 of the experiment. Scripts, programs, and modules used during the analysis can be 
 found in the code folder, while log files are in the logs folder and linked to 
 in this documentation.
@@ -139,10 +139,3 @@ After trimming datasets as described above, monoculture replicates were combined
 using the following notebook.
 
 * [IpythonNotebooks/Assembly.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/Assembly.ipynb)
-
-Following the assembly of monoculture transcriptomes, genes of interest were identified using HMMer and the Pfam HMM profiles. Significance
-of hits is assessed using the GA threshold encoded in Pfam HMMs. DEPENDENCIES: BioPython.
-
-* [code/bash/PfamAnnotation.sh](https://github.com/bastodian/Dimensions/blob/master/T6/code/bash/PfamAnnotation.sh)
-
-Genes identified using the Pfam HMMs were then verified against the annotated Chlamydomans reinhardii transcripts using BLAST.
