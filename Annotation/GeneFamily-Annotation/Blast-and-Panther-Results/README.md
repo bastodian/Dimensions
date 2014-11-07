@@ -17,7 +17,7 @@ found in [UniProt_Cutsom-SeqIDs](https://github.com/bastodian/Dimensions/blob/ma
 All 'green' sequence IDs were extracted and are stored in [plantIDs](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/Blast-and-Panther-Results/plantIDs)
 
 After running the [BLAST search](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/Blast-and-Panther-Results/BLAST.sh) sequences whose top-hits are of 'non-green'
-origin are removed using the following [Python script](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/Blast-and-Panther-Results/SubsetFastaForPanther.py).
+origin are removed using a [Python script](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/Blast-and-Panther-Results/SubsetFastaForPanther.py).
 
 ```bash
 # BLAST.sh will BLAST Taxon.fst against Uniprot and creates Taxon.out

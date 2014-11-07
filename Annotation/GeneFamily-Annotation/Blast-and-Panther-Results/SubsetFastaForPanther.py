@@ -7,7 +7,7 @@
 import sys, glob, screed
 
 # Retrieve the plantIDs 
-Plants = '../UniProt_Custom/plantIDs'
+Plants = '../plantIDs'
 
 # Read the IDs of plant seqs in Uniprot into
 # a dictionary to check Blast hits against
