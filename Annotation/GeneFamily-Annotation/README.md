@@ -14,10 +14,9 @@ performing HMM searches of Panther gene family HMMs against the monocultures
 transcripomes.
 
 BLAST and HMM searches are documented in:
-XXXXX
+* [BLAST and PANTHER HMM searches](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/FastaFiles-BlastResults-PantherSearch)
 
 Summing of read counts across count files are documented in:
-XXXXXX
+* [Gene Family abundance conversion](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/PantherAbundances)
 
-RSEM count files are stored in gzipped form in:
-XXXXX
+* [RSEM count files](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/RSEM)
