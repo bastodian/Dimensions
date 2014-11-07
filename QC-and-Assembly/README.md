@@ -9,13 +9,13 @@ of the experiment. Scripts, programs, and modules used during the analysis can b
 found in the code folder, while log files are in the logs folder and linked to 
 in this documentation.
 
-* [Initial data exploration](https://github.com/bastodian/Dimensions/tree/master/T6#initial-qc)
-* [QC](https://github.com/bastodian/Dimensions/tree/master/T6#qc)
-* [Transcriptome Assembly and Annotation](https://github.com/bastodian/Dimensions/tree/master/T6#assembly-and-annotation)
+* [Initial data exploration](https://github.com/bastodian/Dimensions/tree/master/QC-and-Assembly#initial-qc)
+* [QC](https://github.com/bastodian/Dimensions/tree/master/QC-and-Assembly#qc)
+* [Transcriptome Assembly and Annotation](https://github.com/bastodian/Dimensions/tree/master/QC-and-Assembly#assembly-and-annotation)
 
 Initial QC 
 ----------
-[Back to Overview](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
+[Back to Overview](https://github.com/bastodian/Dimensions/tree/master/QC-and-Assembly#overview)
 
 The quality of all libraries was assessed using FASTQC. IMPORTANT: the libraries follow
 the old Illumina encoding with a Phred ASCII +64 offset rather than standard Sanger +33 
@@ -113,12 +113,12 @@ done
 
 QC
 --
-[Back to Overview](https://github.com/bastodian/Dimensions/tree/master/T6#overview)
+[Back to Overview](https://github.com/bastodian/Dimensions/tree/master/QC-and-Assembly#overview)
 
 Quality control of read-sets is documented in the following Ipython notebook. Obtain the raw read data in gzipped fastq format, download the python script
 from the following notebook and run it over the raw data to obtain cleaned and paired PE read-sets.
 
-* [IpythonNotebooks/QTrim.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/QTrim.ipynb)
+* [IpythonNotebooks/QTrim.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/QC-and-Assembly/IpythonNotebooks/QTrim.ipynb)
 
 Assembly and Read Mapping 
 -----------------------
@@ -127,7 +127,7 @@ Assembly and Read Mapping
 After trimming datasets as described above, monoculture replicates were combined for each species and assembled using Trnity. The assemblies can be re-generated
 using the following notebook.
 
-* [IpythonNotebooks/Assembly.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/T6/IpythonNotebooks/Assembly.ipynb)
+* [IpythonNotebooks/Assembly.ipynb](http://nbviewer.ipython.org/urls/raw.github.com/bastodian/Dimensions/master/QC-and-Assembly/IpythonNotebooks/Assembly.ipynb)
 
 The following Ipython notebook documents how the cultures were mapped against the monocultures using RSEM.
 
