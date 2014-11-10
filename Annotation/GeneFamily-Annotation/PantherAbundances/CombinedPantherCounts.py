@@ -1,34 +1,41 @@
 #!/usr/bin/env python
 
 '''
-    Parse all count files and summarize them into a csv
+    Parse all count files in GeneFamilyCounts and summarize them into a 
+    single csv file. Takes two arguments: file to write output to and type 
+    of count to be summarized (expected count or TPM).
+
+    ./CombinedPantherCounts.py OutPut-TPM.csv TPM
+    ./CombinedPantherCounts.py OutPut-ExpectedCount.csv ExpectedCount
 '''
 
 import sys, os, glob, csv
 
+# Where should the output be written to?
 OutPutFile = sys.argv[1]
 
 # Which count type should be written out? Options:
-# TPM
-# ExpectedCount
+# TPM or ExpectedCount
 CountType = sys.argv[2]
 
-# Create a dictionary of count files to be processed and sort them
+# Create a dictionary of count files to be processed and sort them.
+# Assumes that all count files are stored in GeneFamilyCounts
 Files = []
 for CountFile in glob.glob(os.path.join('./GeneFamilyCounts/', 'D[CN]*')):
     if '.log' not in CountFile:
         Files.append(CountFile)
 Files=sorted(Files)
 
-# I need a dictionary for file and PTHR ID counts
-# The latter will be stored as a dictionary in a dictionary
+# Create a dictionary of dictionaries that stores PantherIDs and counts
+# for every file to be processed:
+#
+# FileDict{File1:{PTHR_1: Count; PTHR_2: Count}; File2:{PTHR1: Count; PTHR2: Count}}
 FileDict = {}
-SampleID = []
 # Crawl over the Count Files and store counts in Dict
 for File in Files:
+    print File
     with open(File, 'r') as Counts:
         PTHRdict = {}
-        SampleID.append(File.rstrip().lstrip('./'))
         for Line in Counts:
             if 'PTHR' in Line:
                 PTHR = Line.rstrip('\n').split()[0]
