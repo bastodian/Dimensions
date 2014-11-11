@@ -31,11 +31,12 @@ Files=sorted(Files)
 #
 # FileDict{File1:{PTHR_1: Count; PTHR_2: Count}; File2:{PTHR1: Count; PTHR2: Count}}
 FileDict = {}
-# Crawl over the Count Files and store counts in Dict
+# Crawl over the count files in GeneFamilyCounts and store PTHR family counts in a 
+# dictionary PTHRdict{PTHR_1: Count; PTHR_2: Count}
 for File in Files:
-    print File
     with open(File, 'r') as Counts:
         PTHRdict = {}
+        SampleID = File.rstrip().lstrip('./').split('/')[1]
         for Line in Counts:
             if 'PTHR' in Line:
                 PTHR = Line.rstrip('\n').split()[0]
@@ -43,38 +44,43 @@ for File in Files:
                 ExpectedCount = Line.rstrip('\n').split()[3]
                 # TPM value are in column 5 of the input
                 TPM = Line.rstrip('\n').split()[4]
+                # What output was specified? TPM or ExpectedCount
                 if CountType == 'TPM':
                     PTHRdict[PTHR] = TPM
                 elif CountType == 'ExpectedCount':
                     PTHRdict[PTHR] = ExpectedCount
+        # Store the PantherID dictionary for this file in a global dictionary
+        # FileDict{File1:{PTHR_1: Count; PTHR_2: Count}; File2:{PTHR1: Count; PTHR2: Count}}
         FileDict[File] = PTHRdict
 
-# Create a list of sorted Filenames for use
+# Create a list of sorted Filenames so that the header of the output is sorted
 Filenames = sorted(FileDict.keys())
 # Create a list of PTHR IDs for later use as RowNames
 PTHRids = FileDict[Filenames[0]].keys()
 
 # Create a list of dictionaries to be written as rows
-# later; each dict/row contains Label: PTHRid, File1: Count1,
-# File2: Count2...
+# each dict/row contains Label: PTHRid, File1: Count1, File2: Count2...
 Rows = []
 for PTHR in PTHRids:
     TmpPTHR = {}
     TmpPTHR['Label'] = PTHR
     for File in Filenames:
-        SampleID = File.rstrip('.pruned').lstrip('./')
+        SampleID = File.rstrip().lstrip('./').split('/')[1]
         TmpPTHR[SampleID] = FileDict[File][PTHR]
     Rows.append(TmpPTHR)
 
-# Create columnNames that are sorted modded filenames
+# Create columnNames that are sorted modified filenames
 ColumnNames = ['Label']
 ColumnNames.extend(sorted(Rows[1].keys())[:-1])
 
-# Here I write the actual outpt
+# Here the actual output is written using the CSV writer to write the dictionaries to file
 with open(OutPutFile, 'wb') as Output:
+    # csvwriter is initiated as a dictionary writer
     csvwriter = csv.DictWriter(Output, delimiter=',', fieldnames=ColumnNames)
-    # As opened csvwriter wants dicts but ColumnNames is a list;
-    # Thus, we trick it by creating a dict Label: Label, File1: File1, File2: File2
+    # As opened csvwriter wants dictionaries but ColumnNames is a list;
+    # Thus, we trick it by creating a dictionary from the ColumnNames list in the form
+    # Label: Label, File1: File1, File2: File2
     csvwriter.writerow(dict((fn,fn) for fn in ColumnNames))
+    # now that the header was written we write the gene family counts on every row
     for Row in Rows:
         csvwriter.writerow(Row)
