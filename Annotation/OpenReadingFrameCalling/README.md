@@ -1,4 +1,11 @@
+Open Reading frame Identification
+=================================
 
+Open reading frame were identified using trinities ORF caller. Only those ORFs that
+contain known domains were retained. These were identified using the Pfam-A
+database. If no domain could be identified in the open reading frame identification
+of gene family association will be unlikely. Thus, I reduced the dataset to be
+interrogated further right here.
 
 ```bash
 for Species in DC10 DC20 DC30 DC40 DC50 DC60 DC70 DC80
@@ -12,7 +19,7 @@ do
     cd ..
 done
 ```
-
+ORFs were renamed and transformed to be easier to handle later.
 
 ```bash
 for ORFs in DC*/best_candidates.eclipsed_orfs_removed.pep
