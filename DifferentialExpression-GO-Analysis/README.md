@@ -5,7 +5,7 @@ Gene family level differential expression
 -----------------------------------------
 
 Gene family level differential expression analyses were performed
-using edgeR through the Trinity version release 20140717 pipeline.
+using [edgeR](http://www.bioconductor.org/packages/release/bioc/html/edgeR.html) through the [Trinity](http://trinityrnaseq.sourceforge.net/) version release 20140717 pipeline.
 
 Count files were obtained from [here](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/PantherAbundances/GeneFamilyCounts).
 
@@ -15,7 +15,8 @@ documented [here](https://github.com/bastodian/Dimensions/tree/master/Annotation
 Additional [documentation](http://trinityrnaseq.sourceforge.net/analysis/diff_expression_analysis.html) is provided through the Trinity sourceforge
 repository.
 
-The following is an example of how the necessary count files were generated.
+The following is an example of how the necessary count files were generated and how
+the edgeR analysis was performed.
 
 ```bash
 # Move to the appropriate directory
