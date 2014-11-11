@@ -48,8 +48,7 @@ trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl \
 To facilitate further analysis log fold changes (FC) and false discovery rates
 were exracted and combined for every DE experiment.
 
-A [python script](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CombineGeneFamilyLevelDE-Results.py) generated the FC and FDR csv files ([FoldChanges](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CombinedGeneFamilyLevel-LogFC.csv) and [FalseDiscoveryRates](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CombinedGeneFamilyLevel-FDR.csv)) 
-stored in this directory.
+A [python script](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CombineGeneFamilyLevelDE-Results.py) generated the FC and FDR csv files for [log fold changes](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CombinedGeneFamilyLevel-LogFC.csv) and [falsediscovery rRates](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CombinedGeneFamilyLevel-FDR.csv). 
 
 ```bash
 # Combine FCs into single csv file
