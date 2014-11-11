@@ -21,7 +21,6 @@ The following is an example of how the necessary count files were generated.
 # Move to the appropriate directory
 cd GeneFamilyLevelDE/DC12
 
-
 # Generate read count files necessary for DE analysis
 #
 # The following creates the input for the DE analysis comparing biculture 12 (DC12) mapped against
