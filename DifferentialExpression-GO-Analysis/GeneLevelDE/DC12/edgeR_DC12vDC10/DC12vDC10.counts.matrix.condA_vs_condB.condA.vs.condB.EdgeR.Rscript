@@ -1,6 +1,6 @@
 library(edgeR)
 
-data = read.table("/home/bastodian/DimensionsData/T6/DifferentialExpression_ForAnita/DC12/AllGenes/DC12vDC10.counts.matrix", header=T, row.names=1, com='')
+data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC12/DC12vDC10.counts.matrix", header=T, row.names=1, com='')
 col_ordering = c(1,2,3,4,5,6)
 rnaseqMatrix = data[,col_ordering]
 rnaseqMatrix = round(rnaseqMatrix)

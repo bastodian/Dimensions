@@ -35,6 +35,30 @@ trinityrnaseq_r20140717/util/abundance_estimates_to_matrix.pl \
     ReadCounts/DC12_R2T6_1 \
     ReadCounts/DC12_R1T6_1
 
+### IMPORTANT ###
+# To make the Trinity wrapper work with the transformed Panther gene counts it needs to be
+# modified
+#
+# The following keys on lines 85-92 need to be changed from:
+0       transcript_id
+1       gene_id
+2       length
+3       effective_length
+4       expected_count
+5       TPM
+6       FPKM
+7       IsoPct
+### to:
+0       gene_id
+1       length
+2       effective_length
+3       expected_count
+4       TPM
+5       FPKM
+# Lastly, line 129 needs to read:
+$counts_field = 3;
+
+
 # The following calls edgeR and writes the output to edgeR_DC12vDC10
 # 
 # DC12vDC10.counts.matrix contains the non-normalized counts and DC12vDC10.described

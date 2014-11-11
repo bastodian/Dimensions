@@ -1,0 +1,3056 @@
+Got 6 samples, and got: 7 data fields.
+Header: DC10_R1T6_1	DC10_R2T6_1	DC10_R3T6_1	DC12_R1T6_1	DC12_R2T6_1	DC12_R3T6_1
+Next: comp8380_c0	153.00	195.00	130.00	201.00	118.00	378.00
+
+$VAR1 = {
+          'DC12_R1T6_1' => 4,
+          'DC10_R1T6_1' => 1,
+          'DC10_R2T6_1' => 2,
+          'DC12_R3T6_1' => 6,
+          'DC12_R2T6_1' => 5,
+          'DC10_R3T6_1' => 3
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC12_R1T6_1',
+                       'DC12_R2T6_1',
+                       'DC12_R3T6_1'
+                     ],
+          'condA' => [
+                       'DC10_R1T6_1',
+                       'DC10_R2T6_1',
+                       'DC10_R3T6_1'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC12vDC10.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC12/DC12vDC10.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC12vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC12vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC20_R1T6_2	DC20_R2T6_2	DC20_R3T6_2	DC12_R1T6_2	DC12_R2T6_2	DC12_R3T6_2
+Next: comp302297_c0	0.00	0.00	5.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC20_R3T6_2' => 3,
+          'DC20_R1T6_2' => 1,
+          'DC12_R2T6_2' => 5,
+          'DC12_R1T6_2' => 4,
+          'DC12_R3T6_2' => 6,
+          'DC20_R2T6_2' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC12_R1T6_2',
+                       'DC12_R2T6_2',
+                       'DC12_R3T6_2'
+                     ],
+          'condA' => [
+                       'DC20_R1T6_2',
+                       'DC20_R2T6_2',
+                       'DC20_R3T6_2'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC12vDC20.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC12/DC12vDC20.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC12vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC12vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC10_R1T6_1	DC10_R2T6_1	DC10_R3T6_1	DC13_R1T6_1	DC13_R2T6_1	DC13_R3T6_1
+Next: comp8380_c0	153.00	195.00	130.00	94.00	168.00	57.00
+
+$VAR1 = {
+          'DC13_R1T6_1' => 4,
+          'DC10_R1T6_1' => 1,
+          'DC10_R2T6_1' => 2,
+          'DC10_R3T6_1' => 3,
+          'DC13_R3T6_1' => 6,
+          'DC13_R2T6_1' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC13_R1T6_1',
+                       'DC13_R2T6_1',
+                       'DC13_R3T6_1'
+                     ],
+          'condA' => [
+                       'DC10_R1T6_1',
+                       'DC10_R2T6_1',
+                       'DC10_R3T6_1'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC13vDC10.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC13/DC13vDC10.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC13vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC13vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC30_R1T6_3	DC30_R2T6_3	DC30_R3T6_3	DC13_R1T6_3	DC13_R2T6_3	DC13_R3T6_3
+Next: comp27713_c0	466.00	2294.32	1863.49	643.98	495.92	1154.07
+
+$VAR1 = {
+          'DC13_R2T6_3' => 5,
+          'DC13_R1T6_3' => 4,
+          'DC30_R2T6_3' => 2,
+          'DC13_R3T6_3' => 6,
+          'DC30_R3T6_3' => 3,
+          'DC30_R1T6_3' => 1
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC13_R1T6_3',
+                       'DC13_R2T6_3',
+                       'DC13_R3T6_3'
+                     ],
+          'condA' => [
+                       'DC30_R1T6_3',
+                       'DC30_R2T6_3',
+                       'DC30_R3T6_3'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC13vDC30.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC13/DC13vDC30.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC13vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC13vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC10_R1T6_1	DC10_R2T6_1	DC10_R3T6_1	DC14_R1T6_1	DC14_R2T6_1	DC14_R3T6_1
+Next: comp8380_c0	153.00	195.00	130.00	244.00	250.00	472.00
+
+$VAR1 = {
+          'DC14_R2T6_1' => 5,
+          'DC10_R1T6_1' => 1,
+          'DC10_R2T6_1' => 2,
+          'DC10_R3T6_1' => 3,
+          'DC14_R3T6_1' => 6,
+          'DC14_R1T6_1' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC14_R1T6_1',
+                       'DC14_R2T6_1',
+                       'DC14_R3T6_1'
+                     ],
+          'condA' => [
+                       'DC10_R1T6_1',
+                       'DC10_R2T6_1',
+                       'DC10_R3T6_1'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC14vDC10.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC14/DC14vDC10.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC14vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC14vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC40_R1T6_4	DC40_R2T6_4	DC40_R3T6_4	DC14_R1T6_4	DC14_R2T6_4	DC14_R3T6_4
+Next: comp43144_c0	312.00	266.00	366.87	5.00	0.00	0.00
+
+$VAR1 = {
+          'DC40_R3T6_4' => 3,
+          'DC40_R1T6_4' => 1,
+          'DC14_R2T6_4' => 5,
+          'DC14_R1T6_4' => 4,
+          'DC40_R2T6_4' => 2,
+          'DC14_R3T6_4' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC14_R1T6_4',
+                       'DC14_R2T6_4',
+                       'DC14_R3T6_4'
+                     ],
+          'condA' => [
+                       'DC40_R1T6_4',
+                       'DC40_R2T6_4',
+                       'DC40_R3T6_4'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC14vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC14/DC14vDC40.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+Error in if (any(input.mean < 0)) stop("input.mean must be non-negative") : 
+  missing value where TRUE/FALSE needed
+Calls: estimateCommonDisp -> equalizeLibSizes -> q2qnbinom
+Execution halted
+Error, cmd: R --vanilla -q < DC14vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript died with ret (256)  at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 584.
+
+
+
+
+WARNING: This EdgeR comparison failed...
+
+Got 6 samples, and got: 7 data fields.
+Header: DC10_R1T6_1	DC10_R2T6_1	DC10_R3T6_1	DC15_R1T6_1	DC15_R2T6_1	DC15_R3T6_1
+Next: comp8380_c0	153.00	195.00	130.00	103.00	97.00	154.00
+
+$VAR1 = {
+          'DC10_R1T6_1' => 1,
+          'DC10_R2T6_1' => 2,
+          'DC15_R2T6_1' => 5,
+          'DC15_R1T6_1' => 4,
+          'DC10_R3T6_1' => 3,
+          'DC15_R3T6_1' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC15_R1T6_1',
+                       'DC15_R2T6_1',
+                       'DC15_R3T6_1'
+                     ],
+          'condA' => [
+                       'DC10_R1T6_1',
+                       'DC10_R2T6_1',
+                       'DC10_R3T6_1'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC15vDC10.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC15/DC15vDC10.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC15vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC15vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC50_R1TWB_5	DC50_R2TWB_5	DC50_R3TWB_5	DC15_R1T6_5	DC15_R2T6_5	DC15_R3T6_5
+Next: comp218239_c0	1.00	6.00	0.00	1.00	0.00	2.00
+
+$VAR1 = {
+          'DC50_R3TWB_5' => 3,
+          'DC50_R1TWB_5' => 1,
+          'DC15_R3T6_5' => 6,
+          'DC50_R2TWB_5' => 2,
+          'DC15_R2T6_5' => 5,
+          'DC15_R1T6_5' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC15_R1T6_5',
+                       'DC15_R1T6_5',
+                       'DC15_R3T6_5'
+                     ],
+          'condA' => [
+                       'DC50_R1TWB_5',
+                       'DC50_R2TWB_5',
+                       'DC50_R3TWB_5'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC15vDC50.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC15/DC15vDC50.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,4,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC15vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC15vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC10_R1T6_1	DC10_R2T6_1	DC10_R3T6_1	DC16_R1T6_1	DC16_R2T6_1	DC16_R3T6_1
+Next: comp8380_c0	153.00	195.00	130.00	150.00	74.00	102.00
+
+$VAR1 = {
+          'DC16_R3T6_1' => 6,
+          'DC10_R1T6_1' => 1,
+          'DC16_R1T6_1' => 4,
+          'DC10_R2T6_1' => 2,
+          'DC10_R3T6_1' => 3,
+          'DC16_R2T6_1' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC16_R1T6_1',
+                       'DC16_R2T6_1',
+                       'DC16_R3T6_1'
+                     ],
+          'condA' => [
+                       'DC10_R1T6_1',
+                       'DC10_R2T6_1',
+                       'DC10_R3T6_1'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC16vDC10.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC16/DC16vDC10.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC16vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC16vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC60_R1T6_6	DC60_R2T6_6	DC60_R3T6_6	DC16_R1T6_6	DC16_R2T6_6	DC16_R3T6_6
+Next: comp27713_c0	21.00	10.00	19.00	5.00	2.00	9.00
+
+$VAR1 = {
+          'DC16_R3T6_6' => 6,
+          'DC60_R3T6_6' => 3,
+          'DC60_R2T6_6' => 2,
+          'DC60_R1T6_6' => 1,
+          'DC16_R2T6_6' => 5,
+          'DC16_R1T6_6' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC16_R1T6_6',
+                       'DC16_R2T6_6',
+                       'DC16_R3T6_6'
+                     ],
+          'condA' => [
+                       'DC60_R1T6_6',
+                       'DC60_R2T6_6',
+                       'DC60_R3T6_6'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC16vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC16/DC16vDC60.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC16vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC16vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC10_R1T6_1	DC10_R2T6_1	DC10_R3T6_1	DC17_R1T6_1	DC17_R2T6_1	DC17_R3T6_1
+Next: comp8380_c0	153.00	195.00	130.00	286.00	130.00	84.00
+
+$VAR1 = {
+          'DC17_R3T6_1' => 6,
+          'DC10_R1T6_1' => 1,
+          'DC10_R2T6_1' => 2,
+          'DC17_R2T6_1' => 5,
+          'DC17_R1T6_1' => 4,
+          'DC10_R3T6_1' => 3
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC17_R1T6_1',
+                       'DC17_R2T6_1',
+                       'DC17_R3T6_1'
+                     ],
+          'condA' => [
+                       'DC10_R1T6_1',
+                       'DC10_R2T6_1',
+                       'DC10_R3T6_1'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC17vDC10.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC17/DC17vDC10.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC17vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC17vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC70_R1TWB_7	DC70_R2T6_7	DC70_R3TWB_7	DC17_R1T6_7	DC17_R2T6_7	DC17_R3T6_7
+Next: comp43144_c0	72.00	54.99	44.99	0.00	1.00	4.00
+
+$VAR1 = {
+          'DC17_R3T6_7' => 6,
+          'DC70_R1TWB_7' => 1,
+          'DC17_R2T6_7' => 5,
+          'DC70_R3TWB_7' => 3,
+          'DC70_R2T6_7' => 2,
+          'DC17_R1T6_7' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC17_R1T6_7',
+                       'DC17_R2T6_7',
+                       'DC17_R3T6_7'
+                     ],
+          'condA' => [
+                       'DC70_R1TWB_7',
+                       'DC70_R2T6_7',
+                       'DC70_R3TWB_7'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC17vDC70.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC17/DC17vDC70.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC17vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC17vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC10_R1T6_1	DC10_R2T6_1	DC10_R3T6_1	DC18_R1T6_1	DC18_R2T6_1	DC18_R3T6_1
+Next: comp8380_c0	153.00	195.00	130.00	411.03	224.00	540.00
+
+$VAR1 = {
+          'DC18_R3T6_1' => 6,
+          'DC10_R1T6_1' => 1,
+          'DC18_R2T6_1' => 5,
+          'DC10_R2T6_1' => 2,
+          'DC18_R1T6_1' => 4,
+          'DC10_R3T6_1' => 3
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC18_R1T6_1',
+                       'DC18_R2T6_1',
+                       'DC18_R3T6_1'
+                     ],
+          'condA' => [
+                       'DC10_R1T6_1',
+                       'DC10_R2T6_1',
+                       'DC10_R3T6_1'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC18vDC10.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC18/DC18vDC10.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC18vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC18vDC10.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 5 samples, and got: 6 data fields.
+Header: DN82_R3TX_8	DN86_R1TX_8	DC18_R1T6_8	DC18_R2T6_8	DC18_R3T6_8
+Next: comp27713_c0	62.00	172.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DN82_R3TX_8' => 1,
+          'DN86_R1TX_8' => 2,
+          'DC18_R2T6_8' => 4,
+          'DC18_R1T6_8' => 3,
+          'DC18_R3T6_8' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC18_R1T6_8',
+                       'DC18_R2T6_8',
+                       'DC18_R3T6_8'
+                     ],
+          'condA' => [
+                       'DN82_R3TX_8',
+                       'DN86_R1TX_8'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC18vDC80.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC18/DC18vDC80.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 2), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC18vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC18vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC20_R1T6_2	DC20_R2T6_2	DC20_R3T6_2	DC23_R1T6_2	DC23_R2T6_2	DC23_R3T6_2
+Next: comp302297_c0	0.00	0.00	5.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC20_R3T6_2' => 3,
+          'DC20_R1T6_2' => 1,
+          'DC23_R3T6_2' => 6,
+          'DC23_R1T6_2' => 4,
+          'DC23_R2T6_2' => 5,
+          'DC20_R2T6_2' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC23_R1T6_2',
+                       'DC23_R2T6_2',
+                       'DC23_R3T6_2'
+                     ],
+          'condA' => [
+                       'DC20_R1T6_2',
+                       'DC20_R2T6_2',
+                       'DC20_R3T6_2'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC23vDC20.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC23/DC23vDC20.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC23vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC23vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC30_R1T6_3	DC30_R2T6_3	DC30_R3T6_3	DC23_R1T6_3	DC23_R2T6_3	DC23_R3T6_3
+Next: comp27713_c0	466.00	2294.32	1863.49	119.06	126.01	26.00
+
+$VAR1 = {
+          'DC23_R2T6_3' => 5,
+          'DC23_R1T6_3' => 4,
+          'DC30_R2T6_3' => 2,
+          'DC23_R3T6_3' => 6,
+          'DC30_R3T6_3' => 3,
+          'DC30_R1T6_3' => 1
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC23_R1T6_3',
+                       'DC23_R2T6_3',
+                       'DC23_R3T6_3'
+                     ],
+          'condA' => [
+                       'DC30_R1T6_3',
+                       'DC30_R2T6_3',
+                       'DC30_R3T6_3'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC23vDC30.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC23/DC23vDC30.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC23vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC23vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC20_R1T6_2	DC20_R2T6_2	DC20_R3T6_2	DC24_R1T6_2	DC24_R2T6_2	DC24_R3T6_2
+Next: comp302297_c0	0.00	0.00	5.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC20_R3T6_2' => 3,
+          'DC20_R1T6_2' => 1,
+          'DC24_R3T6_2' => 6,
+          'DC24_R2T6_2' => 5,
+          'DC24_R1T6_2' => 4,
+          'DC20_R2T6_2' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC24_R1T6_2',
+                       'DC24_R2T6_2',
+                       'DC24_R3T6_2'
+                     ],
+          'condA' => [
+                       'DC20_R1T6_2',
+                       'DC20_R2T6_2',
+                       'DC20_R3T6_2'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC24vDC20.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC24/DC24vDC20.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC24vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC24vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC40_R1T6_4	DC40_R2T6_4	DC40_R3T6_4	DC24_R1T6_4	DC24_R2T6_4	DC24_R3T6_4
+Next: comp43144_c0	312.00	266.00	366.87	0.00	0.00	14.00
+
+$VAR1 = {
+          'DC24_R2T6_4' => 5,
+          'DC24_R1T6_4' => 4,
+          'DC40_R3T6_4' => 3,
+          'DC40_R1T6_4' => 1,
+          'DC40_R2T6_4' => 2,
+          'DC24_R3T6_4' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC24_R1T6_4',
+                       'DC24_R2T6_4',
+                       'DC24_R3T6_4'
+                     ],
+          'condA' => [
+                       'DC40_R1T6_4',
+                       'DC40_R2T6_4',
+                       'DC40_R3T6_4'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC24vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC24/DC24vDC40.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+Error in if (any(input.mean < 0)) stop("input.mean must be non-negative") : 
+  missing value where TRUE/FALSE needed
+Calls: estimateCommonDisp -> equalizeLibSizes -> q2qnbinom
+Execution halted
+Error, cmd: R --vanilla -q < DC24vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript died with ret (256)  at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 584.
+
+
+
+
+WARNING: This EdgeR comparison failed...
+
+Got 6 samples, and got: 7 data fields.
+Header: DC20_R1T6_2	DC20_R2T6_2	DC20_R3T6_2	DC25_R1T6_2	DC25_R2T6_2	DC25_R3T6_2
+Next: comp302297_c0	0.00	0.00	5.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC25_R3T6_2' => 6,
+          'DC20_R3T6_2' => 3,
+          'DC20_R1T6_2' => 1,
+          'DC25_R1T6_2' => 4,
+          'DC25_R2T6_2' => 5,
+          'DC20_R2T6_2' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC25_R1T6_2',
+                       'DC25_R2T6_2',
+                       'DC25_R3T6_2'
+                     ],
+          'condA' => [
+                       'DC20_R1T6_2',
+                       'DC20_R2T6_2',
+                       'DC20_R3T6_2'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC25vDC20.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC25/DC25vDC20.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC25vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC25vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC50_R1TWB_5	DC50_R2TWB_5	DC50_R3TWB_5	DC25_R1T6_5	DC25_R2T6_5	DC25_R3T6_5
+Next: comp218239_c0	1.00	6.00	0.00	1.00	1.00	0.00
+
+$VAR1 = {
+          'DC25_R3T6_5' => 6,
+          'DC25_R1T6_5' => 4,
+          'DC50_R3TWB_5' => 3,
+          'DC50_R1TWB_5' => 1,
+          'DC50_R2TWB_5' => 2,
+          'DC25_R2T6_5' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC25_R1T6_5',
+                       'DC25_R2T6_5',
+                       'DC25_R3T6_5'
+                     ],
+          'condA' => [
+                       'DC50_R1TWB_5',
+                       'DC50_R2TWB_5',
+                       'DC50_R3TWB_5'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC25vDC50.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC25/DC25vDC50.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC25vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC25vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 5 samples, and got: 6 data fields.
+Header: DC20_R1T6_2	DC20_R2T6_2	DC20_R3T6_2	DC26_R1T6_2	DC26_R2T6_2
+Next: comp302297_c0	0.00	0.00	5.00	0.00	1.00
+
+$VAR1 = {
+          'DC26_R1T6_2' => 4,
+          'DC20_R3T6_2' => 3,
+          'DC20_R1T6_2' => 1,
+          'DC26_R2T6_2' => 5,
+          'DC20_R2T6_2' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC26_R1T6_2',
+                       'DC26_R2T6_2'
+                     ],
+          'condA' => [
+                       'DC20_R1T6_2',
+                       'DC20_R2T6_2',
+                       'DC20_R3T6_2'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC26vDC20.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC26/DC26vDC20.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 2)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC26vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC26vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 5 samples, and got: 6 data fields.
+Header: DC60_R1T6_6	DC60_R2T6_6	DC60_R3T6_6	DC26_R1T6_6	DC26_R2T6_6
+Next: comp27713_c0	21.00	10.00	19.00	6.00	17.00
+
+$VAR1 = {
+          'DC60_R3T6_6' => 3,
+          'DC60_R2T6_6' => 2,
+          'DC26_R2T6_6' => 5,
+          'DC60_R1T6_6' => 1,
+          'DC26_R1T6_6' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC26_R1T6_6',
+                       'DC26_R2T6_6'
+                     ],
+          'condA' => [
+                       'DC60_R1T6_6',
+                       'DC60_R2T6_6',
+                       'DC60_R3T6_6'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC26vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC26/DC26vDC60.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 2)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC26vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC26vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC20_R1T6_2	DC20_R2T6_2	DC20_R3T6_2	DC27_R1T6_2	DC27_R2T6_2	DC27_R3T6_2
+Next: comp302297_c0	0.00	0.00	5.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC20_R3T6_2' => 3,
+          'DC20_R1T6_2' => 1,
+          'DC27_R1T6_2' => 4,
+          'DC27_R2T6_2' => 5,
+          'DC27_R3T6_2' => 6,
+          'DC20_R2T6_2' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC27_R1T6_2',
+                       'DC27_R2T6_2',
+                       'DC27_R3T6_2'
+                     ],
+          'condA' => [
+                       'DC20_R1T6_2',
+                       'DC20_R2T6_2',
+                       'DC20_R3T6_2'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC27vDC20.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC27/DC27vDC20.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+Error in if (any(input.mean < 0)) stop("input.mean must be non-negative") : 
+  missing value where TRUE/FALSE needed
+Calls: estimateCommonDisp -> equalizeLibSizes -> q2qnbinom
+Execution halted
+Error, cmd: R --vanilla -q < DC27vDC20.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript died with ret (256)  at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 584.
+
+
+
+
+WARNING: This EdgeR comparison failed...
+
+Got 6 samples, and got: 7 data fields.
+Header: DC70_R1TWB_7	DC70_R2T6_7	DC70_R3TWB_7	DC27_R1T6_7	DC27_R2T6_7	DC27_R3T6_7
+Next: comp43144_c0	72.00	54.99	44.99	5.00	3.00	39.00
+
+$VAR1 = {
+          'DC27_R2T6_7' => 5,
+          'DC70_R1TWB_7' => 1,
+          'DC70_R3TWB_7' => 3,
+          'DC70_R2T6_7' => 2,
+          'DC27_R3T6_7' => 6,
+          'DC27_R1T6_7' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC27_R1T6_7',
+                       'DC27_R2T6_7',
+                       'DC27_R3T6_7'
+                     ],
+          'condA' => [
+                       'DC70_R1TWB_7',
+                       'DC70_R2T6_7',
+                       'DC70_R3TWB_7'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC27vDC70.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC27/DC27vDC70.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC27vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC27vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 5 samples, and got: 6 data fields.
+Header: DC20_R1T6_2	DC20_R2T6_2	DC20_R3T6_2	DC28_R1T6_2	DC28_R2T6_2
+Next: comp302297_c0	0.00	0.00	5.00	0.00	0.00
+
+$VAR1 = {
+          'DC20_R3T6_2' => 3,
+          'DC20_R1T6_2' => 1,
+          'DC28_R2T6_2' => 5,
+          'DC28_R1T6_2' => 4,
+          'DC20_R2T6_2' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC28_R1T6_2',
+                       'DC28_R2T6_2'
+                     ],
+          'condA' => [
+                       'DC20_R1T6_2',
+                       'DC20_R2T6_2',
+                       'DC20_R3T6_2'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC28vDC20.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC28/DC28vDC20.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 2)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC28vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC28vDC20.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 4 samples, and got: 5 data fields.
+Header: DN82_R3TX_8	DN86_R1TX_8	DC28_R1T6_8	DC28_R2T6_8
+Next: comp27713_c0	62.00	172.00	9.00	1.00
+
+$VAR1 = {
+          'DC28_R1T6_8' => 3,
+          'DN82_R3TX_8' => 1,
+          'DC28_R2T6_8' => 4,
+          'DN86_R1TX_8' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC28_R1T6_8',
+                       'DC28_R2T6_8'
+                     ],
+          'condA' => [
+                       'DN82_R3TX_8',
+                       'DN86_R1TX_8'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC28vDC80.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC28/DC28vDC80.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 2), rep("condB", 2)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC28vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC28vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC30_R1T6_3	DC30_R2T6_3	DC30_R3T6_3	DC34_R1T6_3	DC34_R2T6_3	DC34_R3T6_3
+Next: comp27713_c0	466.00	2294.32	1863.49	1584.29	698.48	889.09
+
+$VAR1 = {
+          'DC34_R2T6_3' => 5,
+          'DC34_R1T6_3' => 4,
+          'DC34_R3T6_3' => 6,
+          'DC30_R2T6_3' => 2,
+          'DC30_R3T6_3' => 3,
+          'DC30_R1T6_3' => 1
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC34_R1T6_3',
+                       'DC34_R2T6_3',
+                       'DC34_R3T6_3'
+                     ],
+          'condA' => [
+                       'DC30_R1T6_3',
+                       'DC30_R2T6_3',
+                       'DC30_R3T6_3'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC34vDC30.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC34/DC34vDC30.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC34vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC34vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC40_R1T6_4	DC40_R2T6_4	DC40_R3T6_4	DC34_R1T6_4	DC34_R2T6_4	DC34_R3T6_4
+Next: comp43144_c0	312.00	266.00	366.87	52.00	0.00	0.00
+
+$VAR1 = {
+          'DC40_R3T6_4' => 3,
+          'DC40_R1T6_4' => 1,
+          'DC34_R1T6_4' => 4,
+          'DC34_R2T6_4' => 5,
+          'DC40_R2T6_4' => 2,
+          'DC34_R3T6_4' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC34_R1T6_4',
+                       'DC34_R2T6_4',
+                       'DC34_R3T6_4'
+                     ],
+          'condA' => [
+                       'DC40_R1T6_4',
+                       'DC40_R2T6_4',
+                       'DC40_R3T6_4'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC34vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC34/DC34vDC40.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+Error in if (any(input.mean < 0)) stop("input.mean must be non-negative") : 
+  missing value where TRUE/FALSE needed
+Calls: estimateCommonDisp -> equalizeLibSizes -> q2qnbinom
+Execution halted
+Error, cmd: R --vanilla -q < DC34vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript died with ret (256)  at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 584.
+
+
+
+
+WARNING: This EdgeR comparison failed...
+
+Got 6 samples, and got: 7 data fields.
+Header: DC30_R1T6_3	DC30_R2T6_3	DC30_R3T6_3	DC35_R1T6_3	DC35_R2T6_3	DC35_R3T6_3
+Next: comp27713_c0	466.00	2294.32	1863.49	23.00	15.00	6.00
+
+$VAR1 = {
+          'DC35_R3T6_3' => 6,
+          'DC30_R2T6_3' => 2,
+          'DC35_R1T6_3' => 4,
+          'DC30_R3T6_3' => 3,
+          'DC30_R1T6_3' => 1,
+          'DC35_R2T6_3' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC35_R1T6_3',
+                       'DC35_R2T6_3',
+                       'DC35_R3T6_3'
+                     ],
+          'condA' => [
+                       'DC30_R1T6_3',
+                       'DC30_R2T6_3',
+                       'DC30_R3T6_3'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC35vDC30.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC35/DC35vDC30.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC35vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC35vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC50_R1TWB_5	DC50_R2TWB_5	DC50_R3TWB_5	DC35_R1T6_5	DC35_R2T6_5	DC35_R3T6_5
+Next: comp218239_c0	1.00	6.00	0.00	1.00	2.00	0.00
+
+$VAR1 = {
+          'DC35_R1T6_5' => 4,
+          'DC50_R3TWB_5' => 3,
+          'DC50_R1TWB_5' => 1,
+          'DC35_R3T6_5' => 6,
+          'DC35_R2T6_5' => 5,
+          'DC50_R2TWB_5' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC35_R1T6_5',
+                       'DC35_R2T6_5',
+                       'DC35_R3T6_5'
+                     ],
+          'condA' => [
+                       'DC50_R1TWB_5',
+                       'DC50_R2TWB_5',
+                       'DC50_R3TWB_5'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC35vDC50.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC35/DC35vDC50.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC35vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC35vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC30_R1T6_3	DC30_R2T6_3	DC30_R3T6_3	DC36_R1T6_3	DC36_R2T6_3	DC36_R3T6_3
+Next: comp27713_c0	466.00	2294.32	1863.49	76.00	110.02	98.00
+
+$VAR1 = {
+          'DC36_R2T6_3' => 5,
+          'DC36_R1T6_3' => 4,
+          'DC36_R3T6_3' => 6,
+          'DC30_R2T6_3' => 2,
+          'DC30_R3T6_3' => 3,
+          'DC30_R1T6_3' => 1
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC36_R1T6_3',
+                       'DC36_R2T6_3',
+                       'DC36_R3T6_3'
+                     ],
+          'condA' => [
+                       'DC30_R1T6_3',
+                       'DC30_R2T6_3',
+                       'DC30_R3T6_3'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC36vDC30.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC36/DC36vDC30.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC36vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC36vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC60_R1T6_6	DC60_R2T6_6	DC60_R3T6_6	DC36_R1T6_6	DC36_R2T6_6	DC36_R3T6_6
+Next: comp27713_c0	21.00	10.00	19.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC36_R2T6_6' => 5,
+          'DC60_R3T6_6' => 3,
+          'DC60_R2T6_6' => 2,
+          'DC36_R1T6_6' => 4,
+          'DC60_R1T6_6' => 1,
+          'DC36_R3T6_6' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC36_R3T6_6',
+                       'DC36_R1T6_6',
+                       'DC36_R2T6_6'
+                     ],
+          'condA' => [
+                       'DC60_R1T6_6',
+                       'DC60_R2T6_6',
+                       'DC60_R3T6_6'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC36vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC36/DC36vDC60.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,6,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+Error in if (any(input.mean < 0)) stop("input.mean must be non-negative") : 
+  missing value where TRUE/FALSE needed
+Calls: estimateCommonDisp -> equalizeLibSizes -> q2qnbinom
+Execution halted
+Error, cmd: R --vanilla -q < DC36vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript died with ret (256)  at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 584.
+
+
+
+
+WARNING: This EdgeR comparison failed...
+
+Got 6 samples, and got: 7 data fields.
+Header: DC30_R1T6_3	DC30_R2T6_3	DC30_R3T6_3	DC37_R1T6_3	DC37_R2T6_3	DC37_R3T6_3
+Next: comp27713_c0	466.00	2294.32	1863.49	746.68	1439.66	1333.89
+
+$VAR1 = {
+          'DC37_R2T6_3' => 5,
+          'DC37_R3T6_3' => 6,
+          'DC30_R2T6_3' => 2,
+          'DC37_R1T6_3' => 4,
+          'DC30_R3T6_3' => 3,
+          'DC30_R1T6_3' => 1
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC37_R1T6_3',
+                       'DC37_R2T6_3',
+                       'DC37_R3T6_3'
+                     ],
+          'condA' => [
+                       'DC30_R1T6_3',
+                       'DC30_R2T6_3',
+                       'DC30_R3T6_3'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC37vDC30.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC37/DC37vDC30.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC37vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC37vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC70_R1TWB_7	DC70_R2T6_7	DC70_R3TWB_7	DC37_R1T6_7	DC37_R2T6_7	DC37_R3T6_7
+Next: comp43144_c0	72.00	54.99	44.99	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC37_R3T6_7' => 6,
+          'DC70_R1TWB_7' => 1,
+          'DC70_R3TWB_7' => 3,
+          'DC70_R2T6_7' => 2,
+          'DC37_R1T6_7' => 4,
+          'DC37_R2T6_7' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC37_R1T6_7',
+                       'DC37_R2T6_7',
+                       'DC37_R3T6_7'
+                     ],
+          'condA' => [
+                       'DC70_R1TWB_7',
+                       'DC70_R2T6_7',
+                       'DC70_R3TWB_7'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC37vDC70.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC37/DC37vDC70.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+Error in if (any(input.mean < 0)) stop("input.mean must be non-negative") : 
+  missing value where TRUE/FALSE needed
+Calls: estimateCommonDisp -> equalizeLibSizes -> q2qnbinom
+Execution halted
+Error, cmd: R --vanilla -q < DC37vDC70.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript died with ret (256)  at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 584.
+
+
+
+
+WARNING: This EdgeR comparison failed...
+
+Got 6 samples, and got: 7 data fields.
+Header: DC30_R1T6_3	DC30_R2T6_3	DC30_R3T6_3	DC38_R1T6_3	DC38_R2T6_3	DC38_R3T6_3
+Next: comp27713_c0	466.00	2294.32	1863.49	1676.76	1924.81	1086.70
+
+$VAR1 = {
+          'DC38_R2T6_3' => 5,
+          'DC38_R1T6_3' => 4,
+          'DC38_R3T6_3' => 6,
+          'DC30_R2T6_3' => 2,
+          'DC30_R3T6_3' => 3,
+          'DC30_R1T6_3' => 1
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC38_R1T6_3',
+                       'DC38_R2T6_3',
+                       'DC38_R3T6_3'
+                     ],
+          'condA' => [
+                       'DC30_R1T6_3',
+                       'DC30_R2T6_3',
+                       'DC30_R3T6_3'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC38vDC30.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC38/DC38vDC30.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC38vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC38vDC30.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 5 samples, and got: 6 data fields.
+Header: DN82_R3TX_8	DN86_R1TX_8	DC38_R1T6_8	DC38_R2T6_8	DC38_R3T6_8
+Next: comp27713_c0	62.00	172.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC38_R3T6_8' => 5,
+          'DN82_R3TX_8' => 1,
+          'DC38_R1T6_8' => 3,
+          'DN86_R1TX_8' => 2,
+          'DC38_R2T6_8' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC38_R1T6_8',
+                       'DC38_R2T6_8',
+                       'DC38_R3T6_8'
+                     ],
+          'condA' => [
+                       'DN82_R3TX_8',
+                       'DN86_R1TX_8'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC38vDC80.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC38/DC38vDC80.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 2), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC38vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC38vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC40_R1T6_4	DC40_R2T6_4	DC40_R3T6_4	DC45_R1T6_4	DC45_R2T6_4	DC45_R3T6_4
+Next: comp43144_c0	312.00	266.00	366.87	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC40_R3T6_4' => 3,
+          'DC40_R1T6_4' => 1,
+          'DC45_R3T6_4' => 6,
+          'DC40_R2T6_4' => 2,
+          'DC45_R1T6_4' => 4,
+          'DC45_R2T6_4' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC45_R1T6_4',
+                       'DC45_R2T6_4',
+                       'DC45_R3T6_4'
+                     ],
+          'condA' => [
+                       'DC40_R1T6_4',
+                       'DC40_R2T6_4',
+                       'DC40_R3T6_4'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC45vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC45/DC45vDC40.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+Error in if (any(input.mean < 0)) stop("input.mean must be non-negative") : 
+  missing value where TRUE/FALSE needed
+Calls: estimateCommonDisp -> equalizeLibSizes -> q2qnbinom
+Execution halted
+Error, cmd: R --vanilla -q < DC45vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript died with ret (256)  at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 584.
+
+
+
+
+WARNING: This EdgeR comparison failed...
+
+Got 6 samples, and got: 7 data fields.
+Header: DC50_R1TWB_5	DC50_R2TWB_5	DC50_R3TWB_5	DC45_R1T6_5	DC45_R2T6_5	DC45_R3T6_5
+Next: comp218239_c0	1.00	6.00	0.00	0.00	0.00	4.00
+
+$VAR1 = {
+          'DC45_R1T6_5' => 4,
+          'DC45_R2T6_5' => 5,
+          'DC50_R3TWB_5' => 3,
+          'DC50_R1TWB_5' => 1,
+          'DC50_R2TWB_5' => 2,
+          'DC45_R3T6_5' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC45_R1T6_5',
+                       'DC45_R2T6_5',
+                       'DC45_R3T6_5'
+                     ],
+          'condA' => [
+                       'DC50_R1TWB_5',
+                       'DC50_R2TWB_5',
+                       'DC50_R3TWB_5'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC45vDC50.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC45/DC45vDC50.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC45vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC45vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC60_R1T6_6	DC60_R2T6_6	DC60_R3T6_6	DC46_R1T6_6	DC46_R2T6_6	DC46_R3T6_6
+Next: comp27713_c0	21.00	10.00	19.00	0.00	5.00	15.00
+
+$VAR1 = {
+          'DC60_R3T6_6' => 3,
+          'DC60_R2T6_6' => 2,
+          'DC60_R1T6_6' => 1,
+          'DC46_R2T6_6' => 5,
+          'DC46_R3T6_6' => 6,
+          'DC46_R1T6_6' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC46_R1T6_4',
+                       'DC46_R2T6_4',
+                       'DC46_R3T6_4'
+                     ],
+          'condA' => [
+                       'DC40_R1T6_4',
+                       'DC40_R2T6_4',
+                       'DC40_R3T6_4'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+Error, cannot determine column index for replicate name [DC40_R1T6_4]$VAR1 = {
+          'DC60_R2T6_6' => 2,
+          'DC60_R3T6_6' => 3,
+          'DC60_R1T6_6' => 1,
+          'DC46_R2T6_6' => 5,
+          'DC46_R3T6_6' => 6,
+          'DC46_R1T6_6' => 4
+        };
+Got 6 samples, and got: 7 data fields.
+Header: DC60_R1T6_6	DC60_R2T6_6	DC60_R3T6_6	DC46_R1T6_6	DC46_R2T6_6	DC46_R3T6_6
+Next: comp27713_c0	223.85	217.55	213.83	226.51	225.50	219.28
+
+$VAR1 = {
+          'DC60_R3T6_6' => 3,
+          'DC60_R2T6_6' => 2,
+          'DC60_R1T6_6' => 1,
+          'DC46_R2T6_6' => 5,
+          'DC46_R3T6_6' => 6,
+          'DC46_R1T6_6' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC46_R1T6_6',
+                       'DC46_R2T6_6',
+                       'DC46_R3T6_6'
+                     ],
+          'condA' => [
+                       'DC60_R1T6_6',
+                       'DC60_R2T6_6',
+                       'DC60_R3T6_6'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC46vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC46/DC46vDC60.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC46vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC46vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC40_R1T6_4	DC40_R2T6_4	DC40_R3T6_4	DC47_R1T6_4	DC47_R2T6_4	DC47_R3T6_4
+Next: comp43144_c0	312.00	266.00	366.87	15.00	21.00	58.00
+
+$VAR1 = {
+          'DC47_R1T6_4' => 4,
+          'DC40_R3T6_4' => 3,
+          'DC40_R1T6_4' => 1,
+          'DC47_R3T6_4' => 6,
+          'DC40_R2T6_4' => 2,
+          'DC47_R2T6_4' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC47_R1T6_4',
+                       'DC47_R2T6_4',
+                       'DC47_R3T6_4'
+                     ],
+          'condA' => [
+                       'DC40_R1T6_4',
+                       'DC40_R2T6_4',
+                       'DC40_R3T6_4'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC47vDC40.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC47/DC47vDC40.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC47vDC40.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC47vDC40.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC70_R1TWB_7	DC70_R2T6_7	DC70_R3TWB_7	DC47_R1T6_7	DC47_R2T6_7	DC47_R3T6_7
+Next: comp43144_c0	72.00	54.99	44.99	69.00	35.00	59.00
+
+$VAR1 = {
+          'DC70_R1TWB_7' => 1,
+          'DC70_R3TWB_7' => 3,
+          'DC70_R2T6_7' => 2,
+          'DC47_R1T6_7' => 4,
+          'DC47_R3T6_7' => 6,
+          'DC47_R2T6_7' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC47_R1T6_7',
+                       'DC47_R2T6_7',
+                       'DC47_R3T6_7'
+                     ],
+          'condA' => [
+                       'DC70_R1TWB_7',
+                       'DC70_R2T6_7',
+                       'DC70_R3TWB_7'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC47vDC70.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC47/DC47vDC70.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC47vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC47vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC40_R1T6_4	DC40_R2T6_4	DC40_R3T6_4	DC48_R1T6_4	DC48_R2T6_4	DC48_R3T6_4
+Next: comp43144_c0	312.00	266.00	366.87	14.00	0.00	0.00
+
+$VAR1 = {
+          'DC40_R3T6_4' => 3,
+          'DC40_R1T6_4' => 1,
+          'DC40_R2T6_4' => 2,
+          'DC48_R2T6_4' => 5,
+          'DC48_R1T6_4' => 4,
+          'DC48_R3T6_4' => 6
+        };
+No such file or directory at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 271.
+Got 5 samples, and got: 6 data fields.
+Header: DN82_R3TX_8	DN86_R1TX_8	DC48_R1T6_8	DC48_R2T6_8	DC48_R3T6_8
+Next: comp27713_c0	62.00	172.00	9.00	8.00	5.00
+
+$VAR1 = {
+          'DN82_R3TX_8' => 1,
+          'DN86_R1TX_8' => 2,
+          'DC48_R3T6_8' => 5,
+          'DC48_R2T6_8' => 4,
+          'DC48_R1T6_8' => 3
+        };
+No such file or directory at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 271.
+Got 6 samples, and got: 7 data fields.
+Header: DC50_R1TWB_5	DC50_R2TWB_5	DC50_R3TWB_5	DC56_R1T6_5	DC56_R2T6_5	DC56_R3T6_5
+Next: comp218239_c0	1.00	6.00	0.00	4.00	0.00	1.00
+
+$VAR1 = {
+          'DC56_R3T6_5' => 6,
+          'DC50_R3TWB_5' => 3,
+          'DC50_R1TWB_5' => 1,
+          'DC56_R1T6_5' => 4,
+          'DC50_R2TWB_5' => 2,
+          'DC56_R2T6_5' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC56_R1T6_5',
+                       'DC56_R2T6_5',
+                       'DC56_R3T6_5'
+                     ],
+          'condA' => [
+                       'DC50_R1TWB_5',
+                       'DC50_R2TWB_5',
+                       'DC50_R3TWB_5'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC56vDC50.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC56/DC56vDC50.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC56vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC56vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC60_R1T6_6	DC60_R2T6_6	DC60_R3T6_6	DC56_R1T6_6	DC56_R2T6_6	DC56_R3T6_6
+Next: comp27713_c0	21.00	10.00	19.00	0.00	0.00	0.00
+
+$VAR1 = {
+          'DC56_R3T6_6' => 6,
+          'DC60_R3T6_6' => 3,
+          'DC60_R2T6_6' => 2,
+          'DC60_R1T6_6' => 1,
+          'DC56_R2T6_6' => 5,
+          'DC56_R1T6_6' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC56_R1T6_6',
+                       'DC56_R2T6_6',
+                       'DC56_R3T6_6'
+                     ],
+          'condA' => [
+                       'DC60_R1T6_6',
+                       'DC60_R2T6_6',
+                       'DC60_R3T6_6'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC56vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC56/DC56vDC60.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+Error in if (any(input.mean < 0)) stop("input.mean must be non-negative") : 
+  missing value where TRUE/FALSE needed
+Calls: estimateCommonDisp -> equalizeLibSizes -> q2qnbinom
+Execution halted
+Error, cmd: R --vanilla -q < DC56vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript died with ret (256)  at /usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl line 584.
+
+
+
+
+WARNING: This EdgeR comparison failed...
+
+Got 6 samples, and got: 7 data fields.
+Header: DC50_R1TWB_5	DC50_R2TWB_5	DC50_R3TWB_5	DC57_R1TWB_5	DC57_R2TWB_5	DC57_R3TWB_5
+Next: comp218239_c0	1.00	6.00	0.00	3.00	0.00	4.00
+
+$VAR1 = {
+          'DC57_R3TWB_5' => 6,
+          'DC57_R2TWB_5' => 5,
+          'DC50_R3TWB_5' => 3,
+          'DC50_R1TWB_5' => 1,
+          'DC57_R1TWB_5' => 4,
+          'DC50_R2TWB_5' => 2
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC57_R1TWB_5',
+                       'DC57_R2TWB_5',
+                       'DC57_R3TWB_5'
+                     ],
+          'condA' => [
+                       'DC50_R1TWB_5',
+                       'DC50_R2TWB_5',
+                       'DC50_R3TWB_5'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC57vDC50.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC57/DC57vDC50.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC57vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC57vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC70_R1TWB_7	DC70_R2T6_7	DC70_R3TWB_7	DC57_R1TWB_7	DC57_R2TWB_7	DC57_R3TWB_7
+Next: comp43144_c0	72.00	54.99	44.99	2.00	7.00	2.00
+
+$VAR1 = {
+          'DC57_R2TWB_7' => 5,
+          'DC70_R1TWB_7' => 1,
+          'DC70_R3TWB_7' => 3,
+          'DC70_R2T6_7' => 2,
+          'DC57_R3TWB_7' => 6,
+          'DC57_R1TWB_7' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC57_R1TWB_7',
+                       'DC57_R2TWB_7',
+                       'DC57_R3TWB_7'
+                     ],
+          'condA' => [
+                       'DC70_R1TWB_7',
+                       'DC70_R2T6_7',
+                       'DC70_R3TWB_7'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC57vDC70.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC57/DC57vDC70.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC57vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC57vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC50_R1TWB_5	DC50_R2TWB_5	DC50_R3TWB_5	DC58_R1T6_5	DC58_R2T6_5	DC58_R3T6_5
+Next: comp218239_c0	1.00	6.00	0.00	2.00	0.00	2.00
+
+$VAR1 = {
+          'DC58_R3T6_5' => 6,
+          'DC58_R2T6_5' => 5,
+          'DC50_R3TWB_5' => 3,
+          'DC50_R1TWB_5' => 1,
+          'DC50_R2TWB_5' => 2,
+          'DC58_R1T6_5' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC58_R1T6_5',
+                       'DC58_R2T6_5',
+                       'DC58_R3T6_5'
+                     ],
+          'condA' => [
+                       'DC50_R1TWB_5',
+                       'DC50_R2TWB_5',
+                       'DC50_R3TWB_5'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC58vDC50.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC58/DC58vDC50.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC58vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC58vDC50.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 5 samples, and got: 6 data fields.
+Header: DN82_R3TX_8	DN86_R1TX_8	DC58_R1T6_8	DC58_R2T6_8	DC58_R3T6_8
+Next: comp27713_c0	62.00	172.00	17.00	35.00	4.00
+
+$VAR1 = {
+          'DN82_R3TX_8' => 1,
+          'DC58_R1T6_8' => 3,
+          'DN86_R1TX_8' => 2,
+          'DC58_R3T6_8' => 5,
+          'DC58_R2T6_8' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC58_R1T6_8',
+                       'DC58_R2T6_8',
+                       'DC58_R3T6_8'
+                     ],
+          'condA' => [
+                       'DN82_R3TX_8',
+                       'DN86_R1TX_8'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC58vDC80.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC58/DC58vDC80.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 2), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC58vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC58vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC60_R1T6_6	DC60_R2T6_6	DC60_R3T6_6	DC67_R1T6_6	DC67_R2T6_6	DC67_R3T6_6
+Next: comp27713_c0	21.00	10.00	19.00	39.00	13.00	40.00
+
+$VAR1 = {
+          'DC67_R2T6_6' => 5,
+          'DC60_R3T6_6' => 3,
+          'DC60_R2T6_6' => 2,
+          'DC67_R1T6_6' => 4,
+          'DC60_R1T6_6' => 1,
+          'DC67_R3T6_6' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC67_R1T6_6',
+                       'DC67_R2T6_6',
+                       'DC67_R3T6_6'
+                     ],
+          'condA' => [
+                       'DC60_R1T6_6',
+                       'DC60_R2T6_6',
+                       'DC60_R3T6_6'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC67vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC67/DC67vDC60.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC67vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC67vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC70_R1TWB_7	DC70_R2T6_7	DC70_R3TWB_7	DC67_R1T6_7	DC67_R2T6_7	DC67_R3T6_7
+Next: comp43144_c0	72.00	54.99	44.99	2.00	5.00	10.00
+
+$VAR1 = {
+          'DC67_R1T6_7' => 4,
+          'DC70_R1TWB_7' => 1,
+          'DC70_R3TWB_7' => 3,
+          'DC70_R2T6_7' => 2,
+          'DC67_R2T6_7' => 5,
+          'DC67_R3T6_7' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC67_R1T6_7',
+                       'DC67_R2T6_7',
+                       'DC67_R3T6_7'
+                     ],
+          'condA' => [
+                       'DC70_R1TWB_7',
+                       'DC70_R2T6_7',
+                       'DC70_R3TWB_7'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC67vDC70.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC67/DC67vDC70.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC67vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC67vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC60_R1T6_6	DC60_R2T6_6	DC60_R3T6_6	DC68_R1T6_6	DC68_R2T6_6	DC68_R3T6_6
+Next: comp27713_c0	21.00	10.00	19.00	9.00	5.00	8.00
+
+$VAR1 = {
+          'DC60_R3T6_6' => 3,
+          'DC60_R2T6_6' => 2,
+          'DC68_R2T6_6' => 5,
+          'DC68_R1T6_6' => 4,
+          'DC60_R1T6_6' => 1,
+          'DC68_R3T6_6' => 6
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC68_R1T6_6',
+                       'DC68_R2T6_6',
+                       'DC68_R3T6_6'
+                     ],
+          'condA' => [
+                       'DC60_R1T6_6',
+                       'DC60_R2T6_6',
+                       'DC60_R3T6_6'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC68vDC60.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC68/DC68vDC60.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC68vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC68vDC60.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 5 samples, and got: 6 data fields.
+Header: DN82_R3TX_8	DN86_R1TX_8	DC68_R1T6_8	DC68_R2T6_8	DC68_R3T6_8
+Next: comp27713_c0	62.00	172.00	157.00	199.00	211.00
+
+$VAR1 = {
+          'DN82_R3TX_8' => 1,
+          'DC68_R3T6_8' => 5,
+          'DN86_R1TX_8' => 2,
+          'DC68_R2T6_8' => 4,
+          'DC68_R1T6_8' => 3
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC68_R1T6_8',
+                       'DC68_R2T6_8',
+                       'DC68_R3T6_8'
+                     ],
+          'condA' => [
+                       'DN82_R3TX_8',
+                       'DN86_R1TX_8'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC68vDC80.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC68/DC68vDC80.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 2), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC68vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC68vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 6 samples, and got: 7 data fields.
+Header: DC70_R1TWB_7	DC70_R2T6_7	DC70_R3TWB_7	DC78_R1T6_7	DC78_R2T6_7	DC78_R3T6_7
+Next: comp43144_c0	72.00	54.99	44.99	42.98	65.00	24.00
+
+$VAR1 = {
+          'DC78_R1T6_7' => 4,
+          'DC70_R1TWB_7' => 1,
+          'DC70_R3TWB_7' => 3,
+          'DC70_R2T6_7' => 2,
+          'DC78_R3T6_7' => 6,
+          'DC78_R2T6_7' => 5
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC78_R1T6_7',
+                       'DC78_R2T6_7',
+                       'DC78_R3T6_7'
+                     ],
+          'condA' => [
+                       'DC70_R1TWB_7',
+                       'DC70_R2T6_7',
+                       'DC70_R3TWB_7'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC78vDC70.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC78/DC78vDC70.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5,6)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC78vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC78vDC70.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 
+Got 5 samples, and got: 6 data fields.
+Header: DN82_R3TX_8	DN86_R1TX_8	DC78_R1T6_8	DC78_R2T6_8	DC78_R3T6_8
+Next: comp27713_c0	62.00	172.00	11.00	1.00	12.00
+
+$VAR1 = {
+          'DN82_R3TX_8' => 1,
+          'DC78_R3T6_8' => 5,
+          'DC78_R1T6_8' => 3,
+          'DN86_R1TX_8' => 2,
+          'DC78_R2T6_8' => 4
+        };
+$VAR1 = {
+          'condB' => [
+                       'DC78_R1T6_8',
+                       'DC78_R2T6_8',
+                       'DC78_R3T6_8'
+                     ],
+          'condA' => [
+                       'DN82_R3TX_8',
+                       'DN86_R1TX_8'
+                     ]
+        };
+Contrasts to perform are: $VAR1 = [
+          [
+            'condA',
+            'condB'
+          ]
+        ];
+CMD: R --vanilla -q < DC78vDC80.counts.matrix.condA_vs_condB.condA.vs.condB.EdgeR.Rscript
+> library(edgeR)
+Loading required package: limma
+> 
+> data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC78/DC78vDC80.counts.matrix", header=T, row.names=1, com='')
+> col_ordering = c(1,2,3,4,5)
+> rnaseqMatrix = data[,col_ordering]
+> rnaseqMatrix = round(rnaseqMatrix)
+> rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+> conditions = factor(c(rep("condA", 2), rep("condB", 3)))
+> 
+> exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+Calculating library sizes from column totals.
+> exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+> exp_study = estimateCommonDisp(exp_study)
+> exp_study = estimateTagwiseDisp(exp_study)
+> et = exactTest(exp_study)
+> tTags = topTags(et,n=NULL)
+> write.table(tTags, file='DC78vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+> source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+> pdf("DC78vDC80.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+> result_table = tTags$table
+> plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+> dev.off()
+null device 
+          1 
+> 

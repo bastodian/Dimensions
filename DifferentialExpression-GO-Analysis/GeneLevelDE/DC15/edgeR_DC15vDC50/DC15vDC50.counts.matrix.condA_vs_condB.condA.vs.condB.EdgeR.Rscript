@@ -1,6 +1,6 @@
 library(edgeR)
 
-data = read.table("/home/bastodian/DimensionsData/T6/DifferentialExpression_ForAnita/DC15/AllGenes/DC15vDC50.counts.matrix", header=T, row.names=1, com='')
+data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/./DC15/DC15vDC50.counts.matrix", header=T, row.names=1, com='')
 col_ordering = c(1,2,3,4,4,6)
 rnaseqMatrix = data[,col_ordering]
 rnaseqMatrix = round(rnaseqMatrix)
@@ -8,7 +8,7 @@ rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
 conditions = factor(c(rep("condA", 3), rep("condB", 3)))
 
 exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
-exp_study = calcNormFactors(exp_study)
+exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
 exp_study = estimateCommonDisp(exp_study)
 exp_study = estimateTagwiseDisp(exp_study)
 et = exactTest(exp_study)
