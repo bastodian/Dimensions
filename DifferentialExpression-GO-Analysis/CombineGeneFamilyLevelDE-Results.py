@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 
 '''
+    This script combines the log fold changes and false discovery rates
+    for gene family level differential expression analysis into CSV
+    files. The data is retreieved from ./GeneFamilyLevelDE/DC*/edgeR*/*_results
+
+    Extract logFC
+    ./CombineGeneFamilyLevelDE-Results.py Output.csv FC
+
+    Extract FDR
+    ./CombineGeneFamilyLevelDE-Results.py Output.csv FDR
 '''
 
 import sys, os, glob, csv
@@ -9,7 +18,7 @@ import sys, os, glob, csv
 OutPutFile = sys.argv[1]
 
 # Which count type should be written out? Options:
-# TPM or ExpectedCount
+# FDR for false discovery rate or FC for log fold change
 Option = sys.argv[2]
 
 # Create a dictionary of count files to be processed and sort them.
@@ -39,7 +48,7 @@ for File in Files:
                 LogFC = Line.rstrip('\n').split()[1]
                 # What output was specified? FC or FDR?
                 if Option == 'FC':
-                    PTHRdict[PTHR] = FC
+                    PTHRdict[PTHR] = LogFC
                 elif Option == 'FDR':
                     PTHRdict[PTHR] = FDR
         # Store the PantherID dictionary for this file in a global dictionary
@@ -58,7 +67,6 @@ for PTHR in PTHRids:
     TmpPTHR['Label'] = PTHR
     for File in Filenames:
         SampleID = File.rstrip().lstrip('./').split('/')[2].split('_')[1]
-        print SampleID
         TmpPTHR[SampleID] = FileDict[File][PTHR]
     Rows.append(TmpPTHR)
 
