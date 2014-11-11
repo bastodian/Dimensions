@@ -4,11 +4,11 @@ Gene Family Abundance Estimation
 Individual gene family count files
 ----------------------------------
 
-Based on gene to PANTHER family ID mappings I created 187 gene family count files 
+Based on gene to PANTHER family ID mappings I created [187 gene](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/PantherAbundances/GeneFamilyCounts) family count files 
 using a [script](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/PantherAbundances/PantherAbundanceConvert.py) that sums RSEM counts from all genes predicted to belong to a gene family.
 
 Transformed RSEM count files can be found [here](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/PantherAbundances/GeneFamilyCounts).
-The individual log file document which gene (comp_X_cX)was assigned to which gene
+The individual [log files](https://github.com/bastodian/Dimensions/tree/master/Annotation/GeneFamily-Annotation/PantherAbundances/GeneFamilyCounts/logs) document which gene (comp_X_cX)was assigned to which gene
 family (PTHR ID).
 
 Files are named as follows: DC12_R1T6_1 is biculture containing species 1 and 2
