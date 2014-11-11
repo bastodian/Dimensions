@@ -18,9 +18,9 @@ mapped against species 1. DC12_R1T6_2 is the same biculture mapped against speci
 Combined count matrix in CSV format
 ----------------------------------
 
-The following script combines gene family counts from the 187 separate count files 
-into two single spreadsheets: one that contains TPM counts and a second that
-contains the expected counts (ie, raw counts under the expectation maximization
+The following [script](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/PantherAbundances/CombinedPantherCounts.py) combines gene family counts from the 187 separate count files 
+into two single spreadsheets: one that contains [TPM counts](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/PantherAbundances/Counts-CSV/TPM-Counts.csv) and a second that
+contains the [expected counts](https://github.com/bastodian/Dimensions/blob/master/Annotation/GeneFamily-Annotation/PantherAbundances/Counts-CSV/Expected-Counts.csv) (ie, raw counts under the expectation maximization
 algorithm implemented in RSEM).
 
 How to recreate the count files?
