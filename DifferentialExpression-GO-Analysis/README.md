@@ -1,8 +1,8 @@
 Differential Expression Analysis and GO annotation
 ==================================================
 
-Gene family level differential expression
------------------------------------------
+[Gene family level differential expression](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/GeneFamilyLevelDE)
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 Gene family level differential expression analyses were performed
 using [edgeR](http://www.bioconductor.org/packages/release/bioc/html/edgeR.html) through the [Trinity](http://trinityrnaseq.sourceforge.net/) version release 20140717 pipeline.
@@ -58,3 +58,13 @@ A [python script](https://github.com/bastodian/Dimensions/blob/master/Differenti
 # Combine FDRs into single csv file
 ./CombineGeneFamilyLevelDE-Results.py CombinedGeneFamilyLevel-FDR.csv FDR
 ```
+
+[Gene Level Differential Expression](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/GeneLevelDE)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Write me...
+
+[Gene Ontology Analysis](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/GO-Analysis-Gene-Families)
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Write me...
