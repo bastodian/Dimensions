@@ -36,8 +36,8 @@ trinityrnaseq_r20140717/util/abundance_estimates_to_matrix.pl \
     ReadCounts/DC12_R1T6_1
 
 ### IMPORTANT ###
-# To make the Trinity wrapper work with the transformed Panther gene counts it needs to be
-# modified
+# To make the Trinity wrapper (abundance_estimates_to_matrix.pl) work with the transformed
+# Panther gene counts it needs to be modified.
 #
 # The following keys on lines 85-92 need to be changed from:
 0       transcript_id
@@ -57,17 +57,30 @@ trinityrnaseq_r20140717/util/abundance_estimates_to_matrix.pl \
 5       FPKM
 # Lastly, line 129 needs to read:
 $counts_field = 3;
+```
 
+Once the count files are prepared the differential expression analysis can be re-run using the 
+following loop.
 
-# The following calls edgeR and writes the output to edgeR_DC12vDC10
-# 
-# DC12vDC10.counts.matrix contains the non-normalized counts and DC12vDC10.described
-# contains the description of control and tretment for the comparison
-trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl \
-    --matrix DC12vDC10.counts.matrix \
-    --method edgeR \
-    --samples_file DC12vDC10.described \
-    --output edgeR_DC12vDC10
+```bash
+#!/bin/bash
+
+for MATRIX in ./DC*/*counts.matrix
+do
+    # What directory are we on?
+    DIR=`echo $MATRIX | awk -F '/' '{ print $2}'`
+    # Create the prefix for the comparison (eg, DC12vDC10) by stripping the file
+    # extension from the counts.matrix file
+    COMPARISON=`echo $MATRIX | awk -F '/' '{ print $3 }' | sed 's/.counts.matrix//'`
+    # run the differential expression wrapper packaged with trinity; specify the
+    # appropriate path to the trinity relaease directory
+    trinityrnaseq_r20140717/Analysis/DifferentialExpression/run_DE_analysis.pl \
+        --matrix $MATRIX \
+        --method edgeR \
+        # Which file describes the treatments to group replicates?
+        --samples_file ${MATRIX/counts\.matrix/described} \
+        --output $DIR/edgeR_$COMPARISON
+done
 ```
 
 To facilitate further analysis log fold changes (FC) and false discovery rates
