@@ -16,8 +16,8 @@ Additional [documentation](http://trinityrnaseq.sourceforge.net/analysis/diff_ex
 repository.
 
 The following is an example of how the necessary count files were generated and how
-the edgeR analysis was performed. Yes, I went through the tedium of doing this by hand and I 
-hacked the Perl wrapper packaged with Trinity...
+the edgeR analysis was performed. Yes, did this by hand and I hacked the Perl wrapper 
+packaged with Trinity to get it to work with the unexpected data...
 
 ```bash
 # Move to the appropriate directory
