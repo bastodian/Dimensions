@@ -64,8 +64,6 @@ Once the count files are prepared the differential expression analysis can be re
 following loop.
 
 ```bash
-#!/bin/bash
-
 for MATRIX in ./DC*/*counts.matrix
 do
     # What directory are we on?
