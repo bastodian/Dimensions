@@ -72,4 +72,10 @@ with open(DEout, 'w') as DEoutfile:
     DEoutfile.write('%s,%s,%s,%s,%s\n' % ('Function', 'GeneID', 'logFC', 'logCPM', 'FDR'))
     for Panther in PantherList:
         for DEresults in NewGeneDict[Panther]:
-            DEoutfile.write('%s,%s\n' % (Panther, ','.join(DEresults)))
+            # in some cases count valuesw were zero for a gene, which led edgeR to filter the
+            # gene out; hard set the counts to zero and FDR to 1
+            if len(DEresults) == 1:
+                DEoutfile.write('%s,%s,0,0,1\n' % (Panther, ','.join(DEresults)))
+            # if all data are present the DEresults list is 4 items long
+            elif len(DEresults) == 4:
+                DEoutfile.write('%s,%s\n' % (Panther, ','.join(DEresults)))
