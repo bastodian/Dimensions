@@ -1,0 +1,26 @@
+Function,GeneID,TPM
+CarbonicAnhydrase,comp71453_c0	4.99
+GlutamateSemialdehydeAmintransferase,comp50331_c0	122.65
+IronPermease,comp46975_c1	45.81
+LHCAB,comp43718_c0	446.06
+LHCAB,comp23619_c0	614.40
+LHCAB,comp80786_c0	4.86
+LHCAB,comp23613_c0	768.49
+LHCAB,comp43718_c1	780.59
+LHCAB,comp23612_c1	915.14
+LHCAB,comp37834_c2	475.23
+NitrateReductase,comp23192_c0	10.87
+NitrateReductase,comp48216_c0	254.93
+NitrateTransporter,comp44424_c1	517.87
+NitrateTransporter,comp38133_c0	10.77
+NitriteTransporter,comp48958_c0	101.59
+NitriteTransporter,comp48751_c0	157.74
+NitriteTransporter,comp23893_c0	19.89
+NitrogenAssimilationRegulatoryProtein,comp47452_c1	11.01
+NitrogenAssimilationRegulatoryProtein,comp42067_c1	2.12
+NitrogenAssimilationRegulatoryProtein,comp47626_c6	65.39
+NitrogenRegulatoryProtein,comp49205_c0	179.62
+PhosphateTransporter,comp60515_c0	14.16
+PhosphateTransporter,comp102706_c0	6.45
+PhosphateTransporter,comp42355_c0	5.78
+PhosphateTransporter,comp42355_c1	6.36

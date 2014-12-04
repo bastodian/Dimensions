@@ -8,7 +8,7 @@ rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
 conditions = factor(c(rep("condA", 2), rep("condB", 3)))
 
 exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
-exp_study = calcNormFactors(exp_study, method=c('upperquartile'))
+exp_study = calcNormFactors(exp_study, method=c('TMM'))
 exp_study = estimateCommonDisp(exp_study)
 exp_study = estimateTagwiseDisp(exp_study)
 et = exactTest(exp_study)

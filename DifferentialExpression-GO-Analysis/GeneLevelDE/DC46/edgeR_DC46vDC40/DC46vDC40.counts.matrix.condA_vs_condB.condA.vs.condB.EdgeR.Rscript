@@ -1,0 +1,21 @@
+library(edgeR)
+
+data = read.table("/home/bastodian/Dropbox/github/Dimensions/DifferentialExpression-GO-Analysis/GeneLevelDE/DC46/DC46vDC40.counts.matrix", header=T, row.names=1, com='')
+col_ordering = c(1,2,3,4,5,6)
+rnaseqMatrix = data[,col_ordering]
+rnaseqMatrix = round(rnaseqMatrix)
+rnaseqMatrix = rnaseqMatrix[rowSums(rnaseqMatrix)>=2,]
+conditions = factor(c(rep("condA", 3), rep("condB", 3)))
+
+exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+exp_study = calcNormFactors(exp_study, method=c('TMM'))
+exp_study = estimateCommonDisp(exp_study)
+exp_study = estimateTagwiseDisp(exp_study)
+et = exactTest(exp_study)
+tTags = topTags(et,n=NULL)
+write.table(tTags, file='DC46vDC40.counts.matrix.condA_vs_condB.edgeR.DE_results', sep='	', quote=F, row.names=T)
+source("/usr/local/src/trinityrnaseq_r20140717/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+pdf("DC46vDC40.counts.matrix.condA_vs_condB.edgeR.DE_results.MA_n_Volcano.pdf")
+result_table = tTags$table
+plot_MA_and_Volcano(result_table$logCPM, result_table$logFC, result_table$FDR)
+dev.off()

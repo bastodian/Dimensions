@@ -1,0 +1,24 @@
+Function,GeneID,TPM
+BiotinB7,comp72571_c0	0.14
+BiotinB7,comp32264_c0	0.79
+BiotinB7,comp28766_c0	2.03
+BiotinB7,comp29366_c0	1.49
+BiotinB7,comp21361_c0	0.21
+CobalaminB12,comp25513_c0	3.29
+Glucose,comp11428_c0	0.24
+Glucose,comp8229_c0	1.38
+Glucose,comp25736_c3	1.90
+Mannose,comp22849_c0	0.53
+Mannose,comp22849_c1	0.22
+Succinate,comp11767_c0	2.36
+ThiamineB1,comp23254_c0	0.37
+ThiamineB1,comp23609_c0	0.16
+ThiamineB1,comp24128_c0	1.77
+ThiamineB1,comp62356_c0	0.00
+ThiamineB1,comp17099_c0	0.63
+ThiamineB1,comp23515_c3	0.62
+ThiamineB1,comp25364_c4	0.47
+ThiamineB1,comp17157_c0	3.43
+ThiamineB1,comp54366_c0	0.16
+ThiamineB1,comp11183_c0	0.08
+ThiamineB1,comp8927_c0	0.12
