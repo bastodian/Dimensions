@@ -12,6 +12,10 @@ DEresults = sys.argv[1]
 
 InFile = DEresults.split('/')[-1].split('.')
 DEout = '%s.%s' % (InFile[0], InFile[-1])
+if DEout[2] == DEout[7]:
+    DEout = '%s_A' % DEout
+elif DEout[2] != DEout[7]:
+    DEout = '%s_B' % DEout
 GeneIDs = 'Sp%s.Key' % (InFile[0][-2])
 
 # First set up a dictionary that looks as follows:
