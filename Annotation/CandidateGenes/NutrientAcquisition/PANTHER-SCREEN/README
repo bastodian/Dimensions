@@ -1,0 +1,5 @@
+Chlamydomonas Reference genes:  uniprot_Chlamydomonas.*.fst
+blastp of Chlamydomonas vs Dimsensions: uniprot_Chlamydomonas.*.blastpVSdimensions
+PANTHER familiy IDs:    uniprot_Chlamydomonas.*.panther
+Dimensions candidate genes: Dimensions.*.fst
+Dimensions vs uniprot screen for contams: Dimensions.*.blastpVSuniprot 

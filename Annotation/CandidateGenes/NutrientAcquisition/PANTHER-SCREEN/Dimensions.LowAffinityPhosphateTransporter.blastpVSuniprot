@@ -1,0 +1,11 @@
+Chl|comp112615_c0_seq1_80-583	tr|E6ZR59|E6ZR59_SPORE.Probable.PHO91-similarity.to.Pho87p.and.Pho90p.OS=Sporisorium.reilianum.(strain.SRZ2).GN=sr15635.PE=4.SV=1	74.55	165	42	0	1	165	759	923	9e-74	 248
+Pan|comp48129_c1_seq10_1-2391	tr|A8HYL9|A8HYL9_CHLRE.Low-affinity.phosphate.transporter.OS=Chlamydomonas.reinhardtii.GN=PTC1.PE=4.SV=1	84.75	754	108	3	44	796	58	805	0.0	1274
+Pan|comp48129_c1_seq17_215-2659	tr|A8HYL9|A8HYL9_CHLRE.Low-affinity.phosphate.transporter.OS=Chlamydomonas.reinhardtii.GN=PTC1.PE=4.SV=1	84.29	815	117	5	1	814	1	805	0.0	1370
+Pan|comp48129_c1_seq20_215-2659	tr|A8HYL9|A8HYL9_CHLRE.Low-affinity.phosphate.transporter.OS=Chlamydomonas.reinhardtii.GN=PTC1.PE=4.SV=1	84.29	815	117	5	1	814	1	805	0.0	1370
+Pan|comp48129_c1_seq29_1-2391	tr|A8HYL9|A8HYL9_CHLRE.Low-affinity.phosphate.transporter.OS=Chlamydomonas.reinhardtii.GN=PTC1.PE=4.SV=1	84.75	754	108	3	44	796	58	805	0.0	1274
+Sce|comp8262_c0_seq1_424-2712	tr|A8HYL9|A8HYL9_CHLRE.Low-affinity.phosphate.transporter.OS=Chlamydomonas.reinhardtii.GN=PTC1.PE=4.SV=1	53.26	828	298	12	1	762	1	805	0.0	 814
+Sce|comp8262_c0_seq2_424-846	tr|A8HYL9|A8HYL9_CHLRE.Low-affinity.phosphate.transporter.OS=Chlamydomonas.reinhardtii.GN=PTC1.PE=4.SV=1	78.57	126	26	1	16	140	680	805	1e-52	 187
+Sel|comp15173_c0_seq1_60-2033	tr|A8HYL9|A8HYL9_CHLRE.Low-affinity.phosphate.transporter.OS=Chlamydomonas.reinhardtii.GN=PTC1.PE=4.SV=1	61.76	638	231	5	28	656	171	804	0.0	 757
+Sel|comp9387_c0_seq2_1-573	tr|D9CJ49|D9CJ49_VOLCA.PTC1m.OS=Volvox.carteri.f..nagariensis.GN=PTC1m.PE=4.SV=1	36.03	136	56	3	41	176	1	105	6e-13	76.3
+Tet|comp15785_c0_seq1_3-2363	tr|A8HYL9|A8HYL9_CHLRE.Low-affinity.phosphate.transporter.OS=Chlamydomonas.reinhardtii.GN=PTC1.PE=4.SV=1	54.43	823	297	14	24	786	1	805	0.0	 848
+Tet|comp27944_c0_seq1_324-2849	tr|E9DW58|E9DW58_METAQ.Putative.PHO87.protein.OS=Metarhizium.acridum.(strain.CQMa.102).GN=MAC_01856.PE=4.SV=1	78.04	847	169	8	1	841	116	951	0.0	1342

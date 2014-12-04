@@ -1,0 +1,8 @@
+Chl|comp11799_c0_seq1_297-1472	tr|E1ZPR3|E1ZPR3_CHLVA.Putative.uncharacterized.protein.OS=Chlorella.variabilis.GN=CHLNCDRAFT_139414.PE=4.SV=1	74.12	398	88	6	1	391	1	390	8e-162	 473
+Clo|comp46975_c1_seq1_143-1270	tr|E1ZPR3|E1ZPR3_CHLVA.Putative.uncharacterized.protein.OS=Chlorella.variabilis.GN=CHLNCDRAFT_139414.PE=4.SV=1	62.20	373	120	6	3	373	2	355	6e-113	 347
+Clo|comp46975_c1_seq2_143-1270	tr|E1ZPR3|E1ZPR3_CHLVA.Putative.uncharacterized.protein.OS=Chlorella.variabilis.GN=CHLNCDRAFT_139414.PE=4.SV=1	62.20	373	120	6	3	373	2	355	6e-113	 347
+Pan|comp50889_c0_seq1_949-2538	tr|D8UEV4|D8UEV4_VOLCA.Putative.uncharacterized.protein.OS=Volvox.carteri.GN=VOLCADRAFT_77510.PE=4.SV=1	63.10	458	146	3	1	451	1	442	0.0	 537
+Sce|comp25762_c0_seq1_314-1606	tr|I0Z637|I0Z637_9CHLO.Iron.permease.FTR1.OS=Coccomyxa.subellipsoidea.C-169.PE=4.SV=1	34.30	379	228	6	5	381	2	361	1e-58	 206
+Sel|comp13324_c0_seq1_1-1269	tr|I0Z637|I0Z637_9CHLO.Iron.permease.FTR1.OS=Coccomyxa.subellipsoidea.C-169.PE=4.SV=1	38.81	335	192	5	85	417	2	325	2e-59	 208
+Tet|comp16542_c1_seq1_2-745	tr|Q8LL16|Q8LL16_CHLRE.Iron.permease,.membrane.protein.OS=Chlamydomonas.reinhardtii.GN=FTR1.PE=2.SV=1	41.80	122	62	1	1	113	349	470	5e-22	 103
+Tet|comp16542_c2_seq1_3-404	tr|Q8LL16|Q8LL16_CHLRE.Iron.permease,.membrane.protein.OS=Chlamydomonas.reinhardtii.GN=FTR1.PE=2.SV=1	51.67	120	58	0	4	123	5	124	1e-33	 132
