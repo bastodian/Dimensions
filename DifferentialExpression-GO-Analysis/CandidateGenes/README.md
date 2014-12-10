@@ -5,11 +5,11 @@ TPM counts
 ----------
 
 TPM counts for each gene were extracted from RSEM count files and saved
-in two separate folders: "Facilitation" and "Nutrient Acquisition". Within 
+in two separate folders: [Facilitation](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/CandidateGenes/Facilitation) and [Nutrient Acquisition](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/CandidateGenes/NutrientAcquisition). Within 
 these folders the following files contain counts:
 
-DC12.R1T6_1
-DC12.R1T6_2
+[DC12.R1T6_1](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CandidateGenes/Facilitation/DC12.R1T6_1)
+[DC12.R1T6_2](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CandidateGenes/Facilitation/DC12.R1T6_2)
 ...
 
 Here DC12 refers to the comparison of species 1 with species 2. R1T6 indicates
@@ -22,12 +22,12 @@ Differential Expression Results
 -------------------------------
 
 Select genes were extracted from a gene level edgeR differential expression analysis
-(stored in ../GeneLevelDE/). log2 fold change (logFC), log counts per million (averaged 
+(stored [here](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/GeneLevelDE)). log2 fold change (logFC), log counts per million (averaged 
 counts across replicates), and false discovery rates (FDR) were extracted and stored in
-the "Facilitation" and "Nutrient Acquisition" folders. The files of interest are as follows:
+the [Facilitation](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/CandidateGenes/Facilitation) and [Nutrient Acquisition](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/CandidateGenes/NutrientAcquisition) folders. The files of interest are as follows:
 
-DC12vDC10.DE_results_A
-DC12vDC20.DE_results_B
+[DC12vDC10.DE_results_A](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CandidateGenes/Facilitation/DC12vDC10.DE_results_A)
+[DC12vDC20.DE_results_B](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CandidateGenes/Facilitation/DC12vDC20.DE_results_B)
 ...
 
 Here DC12vDC10 refers to the comparison. Ie, the expression levels in the biculture containing 
@@ -38,14 +38,14 @@ Data exploration
 ----------------
 
 Logged fold changes were plotted for every gene of interest (stored in pdf files). For example 
-DC12.DE_results.pdf contains a summary of the DE results for both comparisons of species 1 and 2
+[DC12.DE_results.pdf](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CandidateGenes/Facilitation/DC12.DE_results.pdf) contains a summary of the DE results for both comparisons of species 1 and 2
 to their respective monocultures. In each plot circles represent the first species in the name 
 (here 1) while squares represent the second species (here 2). Solid symbols indicate FDR < 0.05.
 
 Scripts
 -------
 
-All analyses can be rerun by calling the runMe script; cleanMe should remove the data.
+All analyses can be rerun by calling the [runMe](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CandidateGenes/runMe.sh) script; [cleanMe](https://github.com/bastodian/Dimensions/blob/master/DifferentialExpression-GO-Analysis/CandidateGenes/cleanMe.sh) should remove the data.
 
 ```bash
 ./runMe.sh
