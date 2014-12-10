@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 '''
-    Parses gene level counts from RSEM count matrices (input file) and writes 
-    summary to a new file. IMPORTANT: Files Sp1.Key-SpN.Key need to be present so that 
+    Parses gene level counts DE results from edgeR analysis and writes them to 
+    a new file. IMPORTANT: Files Sp1.Key-SpN.Key need to be present so that 
     gene IDs can be linked to Panther IDs
 '''
 
@@ -28,8 +28,8 @@ with open(GeneIDs, 'rU') as GeneFile:
         GeneDict[CompID] = []
         GeneDict[CompID].append(PantherID)
 
-# Then add TPM counts:
-# {CompID:[PantherID, TPM]}
+# Then add DE results:
+# {CompID:[PantherID, logFC, logCPM, FDR]}
 with open(DEresults, 'rU') as EdgeR:
     for Line in EdgeR:
         if 'logFC' not in Line:
@@ -72,7 +72,7 @@ with open(DEout, 'w') as DEoutfile:
     DEoutfile.write('%s,%s,%s,%s,%s\n' % ('Function', 'GeneID', 'logFC', 'logCPM', 'FDR'))
     for Panther in PantherList:
         for DEresults in NewGeneDict[Panther]:
-            # in some cases count valuesw were zero for a gene, which led edgeR to filter the
+            # in some cases count values were zero for a gene, which led edgeR to filter the
             # gene out; hard set the counts to zero and FDR to 1
             if len(DEresults) == 1:
                 DEoutfile.write('%s,%s,0,0,1\n' % (Panther, ','.join(DEresults)))
