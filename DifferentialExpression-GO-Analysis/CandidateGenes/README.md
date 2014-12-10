@@ -45,4 +45,8 @@ to their respective monocultures. In each plot circles represent the first speci
 Scripts
 -------
 
-All analyses can be rerun by calling the runMe
+All analyses can be rerun by calling the runMe script; cleanMe should remove the data.
+
+```bash
+./runMe.sh
+```
