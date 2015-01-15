@@ -42,9 +42,9 @@ with open(DE_Results, 'r') as DE:
             try:
                 LogFC = float(Line.split()[1])
                 FDR = float(Line.split()[4])
-                if LogFC >= 1 and FDR <= 0.05:
+                if LogFC >= 2 and FDR <= 0.05:
                     UpRegulated[PTHR_ID] = GeneFamilyToGO[PTHR_ID]
-                elif LogFC <= -1 and FDR <= 0.05:
+                elif LogFC <= -2 and FDR <= 0.05:
                     DownRegulated[PTHR_ID] = GeneFamilyToGO[PTHR_ID]
             except ValueError:
                 continue
