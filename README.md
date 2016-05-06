@@ -7,4 +7,4 @@ is documented in its folder.
 
 ## [Differential Expression Analysis and GO Annotation](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis)
 
-## [Annotation] https://github.com/bastodian/Dimensions/tree/master/Annotation
+## [Annotation](https://github.com/bastodian/Dimensions/tree/master/Annotation)
