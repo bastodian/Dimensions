@@ -100,14 +100,11 @@ A [python script](https://github.com/bastodian/Dimensions/blob/master/Differenti
 [Gene Level Differential Expression](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/GeneLevelDE)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Write me...
 
 [Gene Ontology Analysis](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/GO-Analysis-Gene-Families)
 ------------------------------------------------------------------------------------------------------------------------------------------
 
-Write me...
 
 [Candidate Gene Analysis](https://github.com/bastodian/Dimensions/tree/master/DifferentialExpression-GO-Analysis/CandidateGenes)
 --------------------------------------------------------------------------------------------------------------------------------
 
-Write me...
